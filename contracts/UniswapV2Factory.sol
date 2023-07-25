@@ -15,7 +15,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
-    mapping (address => bool)  public authorizeRouters;
+    mapping(address => bool) public override authorizedRouters;
 
     constructor(address _feeToSetter) {
         feeToSetter = _feeToSetter;
@@ -61,7 +61,8 @@ contract UniswapV2Factory is IUniswapV2Factory {
         feeToSetter = _feeToSetter;
     }
 
-    function isAuthorizedRouter(address sender) public returns (bool){
-        return authorizeRouters{}
+    function setRouter(address _router, bool authorized) external override {
+        require(msg.sender == feeToSetter, "UniswapV2: FORBIDDEN");
+        authorizedRouters[_router] = authorized;
     }
 }
