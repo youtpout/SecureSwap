@@ -18,18 +18,78 @@ contract UniswapV2Router is IUniswapV2Router {
     address public immutable override factory;
     address public immutable override WETH;
 
+    bytes32 public DOMAIN_SEPARATOR;
+    mapping(address => uint256) public nonces;
+
+    // keccak256("Swap(address caller,address to,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)");
+    bytes32 public constant PERMIT_TYPEHASH =
+        0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
+
     modifier ensure(uint256 deadline) {
         require(deadline >= block.timestamp, "UniswapV2Router: EXPIRED");
+        _;
+    }
+
+    modifier ensureSwap(uint256 startLine, uint256 deadline) {
+        require(
+            block.timestamp >= startLine && deadline >= block.timestamp,
+            "UniswapV2Router: EXPIRED"
+        );
         _;
     }
 
     constructor(address _factory, address _WETH) {
         factory = _factory;
         WETH = _WETH;
+
+        DOMAIN_SEPARATOR = keccak256(
+            abi.encode(
+                keccak256(
+                    "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
+                ),
+                keccak256(bytes("SecureSwap Router")),
+                keccak256(bytes("1")),
+                block.chainid,
+                address(this)
+            )
+        );
     }
 
     receive() external payable {
         assert(msg.sender == WETH); // only accept ETH via fallback from the WETH contract
+    }
+
+    function getMessageHash(
+        address caller,
+        address to,
+        uint256 amountIn,
+        uint256 amountOut,
+        uint256[] calldata paths,
+        uint256 startline,
+        uint256 deadline
+    ) public view returns (bytes32) {
+        uint256 nonceCaller = nonces[caller];
+        bytes32 digest = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                DOMAIN_SEPARATOR,
+                keccak256(
+                    abi.encode(
+                        PERMIT_TYPEHASH,
+                        caller,
+                        to,
+                        amountIn,
+                        amountOut,
+                        paths,
+                        nonceCaller,
+                        startline,
+                        deadline
+                    )
+                )
+            )
+        );
+
+        return digest;
     }
 
     // **** ADD LIQUIDITY ****

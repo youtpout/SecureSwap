@@ -157,8 +157,8 @@
       }
     },
     "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690296484274,
-      "contentHash": "f900d6d6d06b2839004e07809b53f4a1",
+      "lastModificationDate": 1690298132776,
+      "contentHash": "3b832663e600d31aae2db54f66653ea8",
       "sourceName": "contracts/UniswapV2Router.sol",
       "solcConfig": {
         "settings": {
