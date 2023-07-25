@@ -98,7 +98,9 @@ interface IUniswapV2Router01 {
         uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     ) external payable returns (uint256[] memory amounts);
 
     function swapTokensForExactETH(
