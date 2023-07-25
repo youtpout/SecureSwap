@@ -40,6 +40,14 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         unlocked = 1;
     }
 
+    modifier onlyAuthorizedRouters() {
+        require(
+            IUniswapV2Factory(factory).authorizedRouters(msg.sender),
+            "UniswapV2: Not authorized routers"
+        );
+        _;
+    }
+
     function getReserves()
         public
         view
@@ -195,7 +203,7 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         uint256 amount1Out,
         address to,
         bytes calldata data
-    ) external override lock {
+    ) external override onlyAuthorizedRouters lock {
         require(
             amount0Out > 0 || amount1Out > 0,
             "UniswapV2: INSUFFICIENT_OUTPUT_AMOUNT"
