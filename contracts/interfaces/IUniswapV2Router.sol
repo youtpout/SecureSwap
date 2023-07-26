@@ -31,22 +31,25 @@ interface IUniswapV2Router is IUniswapV2Router01 {
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     ) external;
 
     function swapExactETHForTokensSupportingFeeOnTransferTokens(
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     ) external payable;
 
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     ) external;
 }

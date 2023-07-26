@@ -441,15 +441,25 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     )
         external
         virtual
         override
-        ensure(deadline)
+        ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
+        _verifySignature(
+            amountIn,
+            amountOutMin,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
         require(
             amounts[amounts.length - 1] >= amountOutMin,
@@ -461,22 +471,32 @@ contract UniswapV2Router is IUniswapV2Router {
             UniswapV2Library.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
-        _swap(amounts, path, to);
+        _swap(amounts, path, msg.sender);
     }
 
     function swapTokensForExactTokens(
         uint256 amountOut,
         uint256 amountInMax,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     )
         external
         virtual
         override
-        ensure(deadline)
+        ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
+        _verifySignature(
+            amountInMax,
+            amountOut,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
         require(
             amounts[0] <= amountInMax,
@@ -488,7 +508,7 @@ contract UniswapV2Router is IUniswapV2Router {
             UniswapV2Library.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
-        _swap(amounts, path, to);
+        _swap(amounts, path, msg.sender);
     }
 
     function swapExactETHForTokens(
@@ -535,16 +555,27 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountOut,
         uint256 amountInMax,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     )
         external
         virtual
         override
-        ensure(deadline)
+        ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
         require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
+
+        _verifySignature(
+            amountInMax,
+            amountOut,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
         require(
             amounts[0] <= amountInMax,
@@ -558,23 +589,34 @@ contract UniswapV2Router is IUniswapV2Router {
         );
         _swap(amounts, path, address(this));
         IWETH(WETH).withdraw(amounts[amounts.length - 1]);
-        TransferHelper.safeTransferETH(to, amounts[amounts.length - 1]);
+        TransferHelper.safeTransferETH(msg.sender, amounts[amounts.length - 1]);
     }
 
     function swapExactTokensForETH(
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     )
         external
         virtual
         override
-        ensure(deadline)
+        ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
         require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
+
+        _verifySignature(
+            amountIn,
+            amountOutMin,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
         require(
             amounts[amounts.length - 1] >= amountOutMin,
@@ -588,23 +630,34 @@ contract UniswapV2Router is IUniswapV2Router {
         );
         _swap(amounts, path, address(this));
         IWETH(WETH).withdraw(amounts[amounts.length - 1]);
-        TransferHelper.safeTransferETH(to, amounts[amounts.length - 1]);
+        TransferHelper.safeTransferETH(msg.sender, amounts[amounts.length - 1]);
     }
 
     function swapETHForExactTokens(
         uint256 amountOut,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     )
         external
         payable
         virtual
         override
-        ensure(deadline)
+        ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
         require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
+
+        _verifySignature(
+            msg.value,
+            amountOut,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
         require(
             amounts[0] <= msg.value,
@@ -617,7 +670,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 amounts[0]
             )
         );
-        _swap(amounts, path, to);
+        _swap(amounts, path, msg.sender);
         // refund dust eth, if any
         if (msg.value > amounts[0])
             TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]);
@@ -666,19 +719,32 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external virtual override ensure(deadline) {
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
+    ) external virtual override ensureSwap(startline, deadline) {
+        _verifySignature(
+            amountIn,
+            amountOutMin,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
             UniswapV2Library.pairFor(factory, path[0], path[1]),
             amountIn
         );
-        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(to);
-        _swapSupportingFeeOnTransferTokens(path, to);
+        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(
+            msg.sender
+        );
+        _swapSupportingFeeOnTransferTokens(path, msg.sender);
         require(
-            IERC20(path[path.length - 1]).balanceOf(to) - balanceBefore >=
+            IERC20(path[path.length - 1]).balanceOf(msg.sender) -
+                balanceBefore >=
                 amountOutMin,
             "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
@@ -687,10 +753,21 @@ contract UniswapV2Router is IUniswapV2Router {
     function swapExactETHForTokensSupportingFeeOnTransferTokens(
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
     ) external payable virtual override ensure(deadline) {
         require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
+
+        _verifySignature(
+            msg.value,
+            amountOutMin,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         uint256 amountIn = msg.value;
         IWETH(WETH).deposit{value: amountIn}();
         assert(
@@ -699,10 +776,10 @@ contract UniswapV2Router is IUniswapV2Router {
                 amountIn
             )
         );
-        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(to);
-        _swapSupportingFeeOnTransferTokens(path, to);
+        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(msg.sender);
+        _swapSupportingFeeOnTransferTokens(path, msg.sender);
         require(
-            IERC20(path[path.length - 1]).balanceOf(to) - balanceBefore >=
+            IERC20(path[path.length - 1]).balanceOf(msg.sender) - balanceBefore >=
                 amountOutMin,
             "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
@@ -712,10 +789,21 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external virtual override ensure(deadline) {
+        uint256 startline,
+        uint256 deadline,
+        bytes calldata signature
+    ) external virtual override ensureSwap(startline, deadline) {
         require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
+
+        _verifySignature(
+            amountIn,
+            amountOutMin,
+            path,
+            startline,
+            deadline,
+            signature
+        );
+
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -729,7 +817,7 @@ contract UniswapV2Router is IUniswapV2Router {
             "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
         IWETH(WETH).withdraw(amountOut);
-        TransferHelper.safeTransferETH(to, amountOut);
+        TransferHelper.safeTransferETH(msg.sender, amountOut);
     }
 
     // **** LIBRARY FUNCTIONS ****
