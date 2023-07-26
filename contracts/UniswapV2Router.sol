@@ -27,7 +27,7 @@ contract UniswapV2Router is IUniswapV2Router {
 
     // keccak256("Swap(address caller,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)");
     bytes32 public constant SWAP_TYPEHASH =
-        0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
+        0xb4adfbac3cb08c3c789df3219d832799bb62fa32be119e5539c01f0ee8885ce9;
 
     modifier ensure(uint256 deadline) {
         require(deadline >= block.timestamp, "UniswapV2Router: EXPIRED");
@@ -433,7 +433,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 ? UniswapV2Library.pairFor(factory, output, path[i + 2])
                 : _to;
             IUniswapV2Pair(UniswapV2Library.pairFor(factory, input, output))
-                .swap(amount0Out, amount1Out, to, new bytes(0));
+                .swap(amount0Out, amount1Out, to);
         }
     }
 
@@ -658,7 +658,7 @@ contract UniswapV2Router is IUniswapV2Router {
             address to = i < path.length - 2
                 ? UniswapV2Library.pairFor(factory, output, path[i + 2])
                 : _to;
-            pair.swap(amount0Out, amount1Out, to, new bytes(0));
+            pair.swap(amount0Out, amount1Out, to);
         }
     }
 

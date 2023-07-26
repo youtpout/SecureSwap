@@ -19,6 +19,8 @@ contract SwapTest is Fixture {
         paths[0] = address(wEth);
         paths[1] = address(usdcToken);
 
+        console.logBytes32(keccak256("Swap(address caller,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)"));
+
         uint256 deadline = block.timestamp + 1000;
 
         bytes32 msgHash = routerContract.getMessageHash(

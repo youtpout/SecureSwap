@@ -92,7 +92,6 @@
         "contracts\\UniswapV2ERC20.sol",
         "contracts\\UniswapV2Pair.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Callee.sol",
         "contracts\\interfaces\\IUniswapV2ERC20.sol",
         "contracts\\interfaces\\IUniswapV2Factory.sol",
         "contracts\\interfaces\\IUniswapV2Pair.sol",
@@ -107,8 +106,8 @@
       }
     },
     "contracts/UniswapV2Pair.sol": {
-      "lastModificationDate": 1690363051540,
-      "contentHash": "86a08743c2f425192cab5240d9ca8071",
+      "lastModificationDate": 1690381867432,
+      "contentHash": "21b903625dcb09d42a9ed288010acacb",
       "sourceName": "contracts/UniswapV2Pair.sol",
       "solcConfig": {
         "settings": {
@@ -142,7 +141,6 @@
       "imports": [
         "contracts\\UniswapV2ERC20.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Callee.sol",
         "contracts\\interfaces\\IUniswapV2ERC20.sol",
         "contracts\\interfaces\\IUniswapV2Factory.sol",
         "contracts\\interfaces\\IUniswapV2Pair.sol",
@@ -157,8 +155,8 @@
       }
     },
     "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690381197115,
-      "contentHash": "0c210d84f52de0e7c584e9811647165f",
+      "lastModificationDate": 1690381904851,
+      "contentHash": "1c47b5b5b588029e1cc70ba9640e1d87",
       "sourceName": "contracts/UniswapV2Router.sol",
       "solcConfig": {
         "settings": {
@@ -372,8 +370,8 @@
       }
     },
     "contracts/interfaces/IUniswapV2Pair.sol": {
-      "lastModificationDate": 1690363051542,
-      "contentHash": "88f456cfe5189ec88500f8e6f06cf47c",
+      "lastModificationDate": 1690381880583,
+      "contentHash": "c4ccbe8b5a86441356b5c670a44e8d29",
       "sourceName": "contracts/interfaces/IUniswapV2Pair.sol",
       "solcConfig": {
         "settings": {
@@ -1665,7 +1663,6 @@
         "contracts\\UniswapV2Pair.sol",
         "contracts\\UniswapV2Router.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Callee.sol",
         "contracts\\interfaces\\IUniswapV2ERC20.sol",
         "contracts\\interfaces\\IUniswapV2Factory.sol",
         "contracts\\interfaces\\IUniswapV2Pair.sol",
@@ -1704,8 +1701,8 @@
       }
     },
     "test/SwapTest.t.sol": {
-      "lastModificationDate": 1690381594840,
-      "contentHash": "cafeec643f846a290ff123eceb519395",
+      "lastModificationDate": 1690381823196,
+      "contentHash": "a3b106831883158bfd93482e749926d4",
       "sourceName": "test/SwapTest.t.sol",
       "solcConfig": {
         "settings": {
@@ -1742,7 +1739,6 @@
         "contracts\\UniswapV2Pair.sol",
         "contracts\\UniswapV2Router.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Callee.sol",
         "contracts\\interfaces\\IUniswapV2ERC20.sol",
         "contracts\\interfaces\\IUniswapV2Factory.sol",
         "contracts\\interfaces\\IUniswapV2Pair.sol",
