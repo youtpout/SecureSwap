@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/UniswapV2ERC20.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "434763dd98cac8e233aaa5100bc9f5e4",
+      "lastModificationDate": 1690363051539,
+      "contentHash": "30ca661771179bf731555b362198cdd1",
       "sourceName": "contracts/UniswapV2ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -46,18 +46,18 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IUniswapV2ERC20.sol"
+        "contracts\\interfaces\\IUniswapV2ERC20.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UniswapV2ERC20": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UniswapV2ERC20.sol/UniswapV2ERC20.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2ERC20.sol\\UniswapV2ERC20.json"
         }
       }
     },
     "contracts/UniswapV2Factory.sol": {
-      "lastModificationDate": 1690292254308,
-      "contentHash": "c643cee3f77694d08aee07ed00606df8",
+      "lastModificationDate": 1690363051539,
+      "contentHash": "ddb555e64eb6bd5f445b5e87f4571747",
       "sourceName": "contracts/UniswapV2Factory.sol",
       "solcConfig": {
         "settings": {
@@ -89,26 +89,26 @@
         }
       },
       "imports": [
-        "contracts/UniswapV2ERC20.sol",
-        "contracts/UniswapV2Pair.sol",
-        "contracts/interfaces/IERC20.sol",
-        "contracts/interfaces/IUniswapV2Callee.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol",
-        "contracts/libraries/Math.sol",
-        "contracts/libraries/UQ112x112.sol"
+        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\UniswapV2Pair.sol",
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Callee.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UniswapV2Factory": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UniswapV2Factory.sol/UniswapV2Factory.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Factory.sol\\UniswapV2Factory.json"
         }
       }
     },
     "contracts/UniswapV2Pair.sol": {
-      "lastModificationDate": 1690296489534,
-      "contentHash": "9f931364a157c79b8d52c2511cb80513",
+      "lastModificationDate": 1690363051540,
+      "contentHash": "86a08743c2f425192cab5240d9ca8071",
       "sourceName": "contracts/UniswapV2Pair.sol",
       "solcConfig": {
         "settings": {
@@ -140,25 +140,25 @@
         }
       },
       "imports": [
-        "contracts/UniswapV2ERC20.sol",
-        "contracts/interfaces/IERC20.sol",
-        "contracts/interfaces/IUniswapV2Callee.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol",
-        "contracts/libraries/Math.sol",
-        "contracts/libraries/UQ112x112.sol"
+        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Callee.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UniswapV2Pair": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UniswapV2Pair.sol/UniswapV2Pair.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Pair.sol\\UniswapV2Pair.json"
         }
       }
     },
     "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690298132776,
-      "contentHash": "3b832663e600d31aae2db54f66653ea8",
+      "lastModificationDate": 1690381197115,
+      "contentHash": "0c210d84f52de0e7c584e9811647165f",
       "sourceName": "contracts/UniswapV2Router.sol",
       "solcConfig": {
         "settings": {
@@ -190,26 +190,26 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IERC20.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol",
-        "contracts/interfaces/IUniswapV2Router.sol",
-        "contracts/interfaces/IUniswapV2Router01.sol",
-        "contracts/interfaces/IWETH.sol",
-        "contracts/libraries/TransferHelper.sol",
-        "contracts/libraries/UniswapV2Library.sol"
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\interfaces\\IUniswapV2Router.sol",
+        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\IWETH.sol",
+        "contracts\\libraries\\TransferHelper.sol",
+        "contracts\\libraries\\UniswapV2Library.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UniswapV2Router": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UniswapV2Router.sol/UniswapV2Router.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Router.sol\\UniswapV2Router.json"
         }
       }
     },
     "contracts/interfaces/IERC20.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "bf5d76e9649e49abf33b5ae78c2b7519",
+      "lastModificationDate": 1690363051540,
+      "contentHash": "74aca90bea302ba93aa69accaec76b26",
       "sourceName": "contracts/interfaces/IERC20.sol",
       "solcConfig": {
         "settings": {
@@ -244,13 +244,13 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "IERC20": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IERC20.sol/IERC20.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IERC20.sol\\IERC20.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2Callee.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "c9f095f8e8645a035ab8e06ae536d2d7",
+      "lastModificationDate": 1690363051541,
+      "contentHash": "ba3c21b5d43975097e26cf0416fc4a43",
       "sourceName": "contracts/interfaces/IUniswapV2Callee.sol",
       "solcConfig": {
         "settings": {
@@ -285,13 +285,13 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "IUniswapV2Callee": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2Callee.sol/IUniswapV2Callee.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Callee.sol\\IUniswapV2Callee.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2ERC20.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "4bf8d044bedf10c68510f54758ddfdbd",
+      "lastModificationDate": 1690363051541,
+      "contentHash": "1c8de4b4047ac4c8387768645fc52977",
       "sourceName": "contracts/interfaces/IUniswapV2ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -326,13 +326,13 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "IUniswapV2ERC20": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2ERC20.sol/IUniswapV2ERC20.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2ERC20.sol\\IUniswapV2ERC20.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2Factory.sol": {
-      "lastModificationDate": 1690292275840,
-      "contentHash": "d17d9766832c2d0a6b25c8e63e17d7b4",
+      "lastModificationDate": 1690363051541,
+      "contentHash": "c886ab62807ea3ee161140244419261e",
       "sourceName": "contracts/interfaces/IUniswapV2Factory.sol",
       "solcConfig": {
         "settings": {
@@ -367,13 +367,13 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "IUniswapV2Factory": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2Factory.sol/IUniswapV2Factory.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Factory.sol\\IUniswapV2Factory.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2Pair.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "5a4c63891e5dfad1c4a18d3bf663e88c",
+      "lastModificationDate": 1690363051542,
+      "contentHash": "88f456cfe5189ec88500f8e6f06cf47c",
       "sourceName": "contracts/interfaces/IUniswapV2Pair.sol",
       "solcConfig": {
         "settings": {
@@ -405,18 +405,18 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IUniswapV2ERC20.sol"
+        "contracts\\interfaces\\IUniswapV2ERC20.sol"
       ],
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "IUniswapV2Pair": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2Pair.sol/IUniswapV2Pair.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Pair.sol\\IUniswapV2Pair.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2Router.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "08219d37b8799569975f7fe0d24fb716",
+      "lastModificationDate": 1690363051542,
+      "contentHash": "b33b01d1189ddfaf0b9c0c119d8976e8",
       "sourceName": "contracts/interfaces/IUniswapV2Router.sol",
       "solcConfig": {
         "settings": {
@@ -448,18 +448,18 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IUniswapV2Router01.sol"
+        "contracts\\interfaces\\IUniswapV2Router01.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "IUniswapV2Router": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2Router.sol/IUniswapV2Router.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Router.sol\\IUniswapV2Router.json"
         }
       }
     },
     "contracts/interfaces/IUniswapV2Router01.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "2271fd7f6adcef690f9d38aa99684ef1",
+      "lastModificationDate": 1690378231551,
+      "contentHash": "e247d507914ae9380ce3f7057c8bc7ab",
       "sourceName": "contracts/interfaces/IUniswapV2Router01.sol",
       "solcConfig": {
         "settings": {
@@ -494,13 +494,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "IUniswapV2Router01": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IUniswapV2Router01.sol/IUniswapV2Router01.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Router01.sol\\IUniswapV2Router01.json"
         }
       }
     },
     "contracts/interfaces/IWETH.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "1efaf0aade045437bf46ef8e1ac711aa",
+      "lastModificationDate": 1690363051543,
+      "contentHash": "f58ef230fd1ac13f9ac302062d20162f",
       "sourceName": "contracts/interfaces/IWETH.sol",
       "solcConfig": {
         "settings": {
@@ -535,13 +535,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "IWETH": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IWETH.sol/IWETH.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IWETH.sol\\IWETH.json"
         }
       }
     },
     "contracts/libraries/Math.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "e76bb6d91e981fb5f9e2c5e2684116b1",
+      "lastModificationDate": 1690363051543,
+      "contentHash": "b91da94e7ed4f2c5568dd01829f6729a",
       "sourceName": "contracts/libraries/Math.sol",
       "solcConfig": {
         "settings": {
@@ -576,13 +576,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "Math": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Math.sol/Math.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Math.sol\\Math.json"
         }
       }
     },
     "contracts/libraries/TransferHelper.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "4cb4236e820af04cd7d49a78635f1f18",
+      "lastModificationDate": 1690363051544,
+      "contentHash": "544391b73cc08be248f2d3623d4c8af0",
       "sourceName": "contracts/libraries/TransferHelper.sol",
       "solcConfig": {
         "settings": {
@@ -617,13 +617,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "TransferHelper": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "TransferHelper.sol/TransferHelper.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "TransferHelper.sol\\TransferHelper.json"
         }
       }
     },
     "contracts/libraries/UQ112x112.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "35229f7c41ee46eec67e04f277101024",
+      "lastModificationDate": 1690363051544,
+      "contentHash": "01c5de3fcd0a71260fef0e47d670cb12",
       "sourceName": "contracts/libraries/UQ112x112.sol",
       "solcConfig": {
         "settings": {
@@ -658,13 +658,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UQ112x112": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UQ112x112.sol/UQ112x112.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UQ112x112.sol\\UQ112x112.json"
         }
       }
     },
     "contracts/libraries/UniswapV2Library.sol": {
-      "lastModificationDate": 1690296422468,
-      "contentHash": "930122a52252bd0dc089d0477ed50dd8",
+      "lastModificationDate": 1690363051544,
+      "contentHash": "f374008b12634d8d84c84f6968df0fcb",
       "sourceName": "contracts/libraries/UniswapV2Library.sol",
       "solcConfig": {
         "settings": {
@@ -696,20 +696,20 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol"
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "UniswapV2Library": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "UniswapV2Library.sol/UniswapV2Library.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Library.sol\\UniswapV2Library.json"
         }
       }
     },
     "contracts/test/ERC20.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "8dca948a79e42f9e7888060bc1b3c9ae",
+      "lastModificationDate": 1690363051545,
+      "contentHash": "e0d9dde455e23a9aeca0be7b3f990978",
       "sourceName": "contracts/test/ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -741,19 +741,19 @@
         }
       },
       "imports": [
-        "contracts/UniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol"
+        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "ERC20": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "ERC20.sol/ERC20.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ERC20.sol\\ERC20.json"
         }
       }
     },
     "contracts/test/RouterEventEmitter.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "bb4f90a0cf544e25b71489cb9ec8d864",
+      "lastModificationDate": 1690363051545,
+      "contentHash": "fb3fdc10cd853e4184709241d3bec0e8",
       "sourceName": "contracts/test/RouterEventEmitter.sol",
       "solcConfig": {
         "settings": {
@@ -785,18 +785,18 @@
         }
       },
       "imports": [
-        "contracts/interfaces/IUniswapV2Router01.sol"
+        "contracts\\interfaces\\IUniswapV2Router01.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "RouterEventEmitter": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "RouterEventEmitter.sol/RouterEventEmitter.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "RouterEventEmitter.sol\\RouterEventEmitter.json"
         }
       }
     },
     "contracts/test/WETH9.sol": {
-      "lastModificationDate": 1689297094000,
-      "contentHash": "3030ec3da6604cf66f312b4c3f395dc0",
+      "lastModificationDate": 1690363051545,
+      "contentHash": "f7590efa000894a3bf55c4434745de80",
       "sourceName": "contracts/test/WETH9.sol",
       "solcConfig": {
         "settings": {
@@ -831,13 +831,13 @@
       "versionRequirement": "=0.8.4",
       "artifacts": {
         "WETH9": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "WETH9.sol/WETH9.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "WETH9.sol\\WETH9.json"
         }
       }
     },
     "lib/forge-std/lib/ds-test/src/test.sol": {
-      "lastModificationDate": 1690292849018,
-      "contentHash": "9febff9d09f18af5306669dc276c4c43",
+      "lastModificationDate": 1690377747349,
+      "contentHash": "2df678a5b2611e0d7bc9ef6745d19157",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
         "settings": {
@@ -872,13 +872,13 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "DSTest": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "test.sol/DSTest.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "test.sol\\DSTest.json"
         }
       }
     },
     "lib/forge-std/src/Base.sol": {
-      "lastModificationDate": 1690292848004,
-      "contentHash": "ee13c050b1914464f1d3f90cde90204b",
+      "lastModificationDate": 1690377746120,
+      "contentHash": "ac34dc048311bd400c5c5351e7975438",
       "sourceName": "lib/forge-std/src/Base.sol",
       "solcConfig": {
         "settings": {
@@ -916,19 +916,19 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "CommonBase": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Base.sol/CommonBase.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Base.sol\\CommonBase.json"
         },
         "ScriptBase": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Base.sol/ScriptBase.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Base.sol\\ScriptBase.json"
         },
         "TestBase": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Base.sol/TestBase.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Base.sol\\TestBase.json"
         }
       }
     },
     "lib/forge-std/src/StdAssertions.sol": {
-      "lastModificationDate": 1690292848004,
-      "contentHash": "6cc2858240bcd443debbbf075490e325",
+      "lastModificationDate": 1690377746121,
+      "contentHash": "d136ed3be15b16e8875196a38f225c2f",
       "sourceName": "lib/forge-std/src/StdAssertions.sol",
       "solcConfig": {
         "settings": {
@@ -960,19 +960,19 @@
         }
       },
       "imports": [
-        "lib/forge-std/lib/ds-test/src/test.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/StdMath.sol"
       ],
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdAssertions": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdAssertions.sol/StdAssertions.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdAssertions.sol\\StdAssertions.json"
         }
       }
     },
     "lib/forge-std/src/StdChains.sol": {
-      "lastModificationDate": 1690292848004,
-      "contentHash": "aff0685683a41d8e314d64aef646fe6f",
+      "lastModificationDate": 1690377746121,
+      "contentHash": "5f094e98439f4dadf98efdcf9e0a36d0",
       "sourceName": "lib/forge-std/src/StdChains.sol",
       "solcConfig": {
         "settings": {
@@ -1009,13 +1009,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdChains": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdChains.sol/StdChains.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdChains.sol\\StdChains.json"
         }
       }
     },
     "lib/forge-std/src/StdCheats.sol": {
-      "lastModificationDate": 1690292848004,
-      "contentHash": "27745bb24c5568c75c3043277ee18bcb",
+      "lastModificationDate": 1690377746122,
+      "contentHash": "bda41267601a8c7af434a73ac26f026e",
       "sourceName": "lib/forge-std/src/StdCheats.sol",
       "solcConfig": {
         "settings": {
@@ -1053,16 +1053,16 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdCheats": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdCheats.sol/StdCheats.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdCheats.sol\\StdCheats.json"
         },
         "StdCheatsSafe": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdCheats.sol/StdCheatsSafe.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdCheats.sol\\StdCheatsSafe.json"
         }
       }
     },
     "lib/forge-std/src/StdError.sol": {
-      "lastModificationDate": 1690292848005,
-      "contentHash": "64c896e1276a291776e5ea5aecb3870a",
+      "lastModificationDate": 1690377746123,
+      "contentHash": "8c35ad419c5b8748575080db5fd58cae",
       "sourceName": "lib/forge-std/src/StdError.sol",
       "solcConfig": {
         "settings": {
@@ -1097,13 +1097,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdError": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdError.sol/stdError.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdError.sol\\stdError.json"
         }
       }
     },
     "lib/forge-std/src/StdInvariant.sol": {
-      "lastModificationDate": 1690292848005,
-      "contentHash": "6d12d54c05754ad4e03066726dca3a84",
+      "lastModificationDate": 1690377746123,
+      "contentHash": "67da80544cd8ac26d39bba76acb5a3f6",
       "sourceName": "lib/forge-std/src/StdInvariant.sol",
       "solcConfig": {
         "settings": {
@@ -1138,13 +1138,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdInvariant": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdInvariant.sol/StdInvariant.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdInvariant.sol\\StdInvariant.json"
         }
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1690292848005,
-      "contentHash": "2e1d13674e152408867795362d833c24",
+      "lastModificationDate": 1690377746123,
+      "contentHash": "71c2c9083583f2adbe0d07a725689def",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
         "settings": {
@@ -1181,13 +1181,13 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "stdJson": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdJson.sol/stdJson.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdJson.sol\\stdJson.json"
         }
       }
     },
     "lib/forge-std/src/StdMath.sol": {
-      "lastModificationDate": 1690292848005,
-      "contentHash": "9da8f453eba6bb98f3d75bc6822bfb29",
+      "lastModificationDate": 1690377746124,
+      "contentHash": "fc64b149e462e64dea89f50e9cc0318f",
       "sourceName": "lib/forge-std/src/StdMath.sol",
       "solcConfig": {
         "settings": {
@@ -1222,13 +1222,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdMath": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdMath.sol/stdMath.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdMath.sol\\stdMath.json"
         }
       }
     },
     "lib/forge-std/src/StdStorage.sol": {
-      "lastModificationDate": 1690292848006,
-      "contentHash": "4fc0ff0cb196a405e5a4c9fa1c6acccb",
+      "lastModificationDate": 1690377746124,
+      "contentHash": "b80c671fb377d9cd564f0d0cca605681",
       "sourceName": "lib/forge-std/src/StdStorage.sol",
       "solcConfig": {
         "settings": {
@@ -1265,16 +1265,16 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdStorage": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdStorage.sol/stdStorage.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdStorage.sol\\stdStorage.json"
         },
         "stdStorageSafe": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdStorage.sol/stdStorageSafe.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdStorage.sol\\stdStorageSafe.json"
         }
       }
     },
     "lib/forge-std/src/StdStyle.sol": {
-      "lastModificationDate": 1690292848006,
-      "contentHash": "6281165a12aa639705c691fccefd855e",
+      "lastModificationDate": 1690377746125,
+      "contentHash": "f5cb431eb5bd89ef37aaf831fc099459",
       "sourceName": "lib/forge-std/src/StdStyle.sol",
       "solcConfig": {
         "settings": {
@@ -1311,13 +1311,13 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "StdStyle": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdStyle.sol/StdStyle.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdStyle.sol\\StdStyle.json"
         }
       }
     },
     "lib/forge-std/src/StdUtils.sol": {
-      "lastModificationDate": 1690292848006,
-      "contentHash": "3ce83748fd76644688f916c9cced545b",
+      "lastModificationDate": 1690377746126,
+      "contentHash": "4b91d5e3edfc402cc60d03f0cc9a8f0e",
       "sourceName": "lib/forge-std/src/StdUtils.sol",
       "solcConfig": {
         "settings": {
@@ -1355,13 +1355,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdUtils": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "StdUtils.sol/StdUtils.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "StdUtils.sol\\StdUtils.json"
         }
       }
     },
     "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1690292849055,
-      "contentHash": "c67db2c47c2e757cc33d38d6db0b1562",
+      "lastModificationDate": 1690377746126,
+      "contentHash": "b8dfe211fc0116de9e76d7f3e4172a3b",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
         "settings": {
@@ -1393,7 +1393,7 @@
         }
       },
       "imports": [
-        "lib/forge-std/lib/ds-test/src/test.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/Base.sol",
         "lib/forge-std/src/StdAssertions.sol",
         "lib/forge-std/src/StdChains.sol",
@@ -1406,7 +1406,7 @@
         "lib/forge-std/src/StdStyle.sol",
         "lib/forge-std/src/StdUtils.sol",
         "lib/forge-std/src/Vm.sol",
-        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src\\console.sol",
         "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol",
         "lib/forge-std/src/safeconsole.sol"
@@ -1414,13 +1414,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "Test": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Test.sol/Test.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Test.sol\\Test.json"
         }
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1690292848006,
-      "contentHash": "b098c2721502365797aae8d0ee1babb8",
+      "lastModificationDate": 1690377746127,
+      "contentHash": "a08988f86a7fe02cd2beeff6313fbee9",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
         "settings": {
@@ -1455,16 +1455,16 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "Vm": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Vm.sol/Vm.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Vm.sol\\Vm.json"
         },
         "VmSafe": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Vm.sol/VmSafe.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Vm.sol\\VmSafe.json"
         }
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1690292848007,
-      "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
+      "lastModificationDate": 1690377746127,
+      "contentHash": "c8cf989d04bc2e3069e3d91facf3b69c",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
         "settings": {
@@ -1499,13 +1499,13 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "console.sol/console.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "console.sol\\console.json"
         }
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1690292848008,
-      "contentHash": "491ca717c1915995e78cc361485a3067",
+      "lastModificationDate": 1690377746129,
+      "contentHash": "84bf7223a45eb5be69eae69a26531306",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
         "settings": {
@@ -1540,13 +1540,13 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console2": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "console2.sol/console2.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "console2.sol\\console2.json"
         }
       }
     },
     "lib/forge-std/src/interfaces/IMulticall3.sol": {
-      "lastModificationDate": 1690292848009,
-      "contentHash": "7b131ca1ca32ef6378b7b9ad5488b901",
+      "lastModificationDate": 1690377746133,
+      "contentHash": "5de707a0d82c8f56049fbd3ba28944ed",
       "sourceName": "lib/forge-std/src/interfaces/IMulticall3.sol",
       "solcConfig": {
         "settings": {
@@ -1581,13 +1581,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "IMulticall3": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "IMulticall3.sol/IMulticall3.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "IMulticall3.sol\\IMulticall3.json"
         }
       }
     },
     "lib/forge-std/src/safeconsole.sol": {
-      "lastModificationDate": 1690292848009,
-      "contentHash": "ac3b1bf5a444db5db3656021830258a8",
+      "lastModificationDate": 1690377746134,
+      "contentHash": "b78b3af4008494f560706b3e44286080",
       "sourceName": "lib/forge-std/src/safeconsole.sol",
       "solcConfig": {
         "settings": {
@@ -1622,13 +1622,13 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "safeconsole": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "safeconsole.sol/safeconsole.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "safeconsole.sol\\safeconsole.json"
         }
       }
     },
     "test/Fixture.t.sol": {
-      "lastModificationDate": 1690295910642,
-      "contentHash": "de246864925f22d9af2038faad2114df",
+      "lastModificationDate": 1690381616782,
+      "contentHash": "08a2d2dbdf60aba179ecc5a4c9c36bbc",
       "sourceName": "test/Fixture.t.sol",
       "solcConfig": {
         "settings": {
@@ -1660,24 +1660,24 @@
         }
       },
       "imports": [
-        "contracts/UniswapV2ERC20.sol",
-        "contracts/UniswapV2Factory.sol",
-        "contracts/UniswapV2Pair.sol",
-        "contracts/UniswapV2Router.sol",
-        "contracts/interfaces/IERC20.sol",
-        "contracts/interfaces/IUniswapV2Callee.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol",
-        "contracts/interfaces/IUniswapV2Router.sol",
-        "contracts/interfaces/IUniswapV2Router01.sol",
-        "contracts/interfaces/IWETH.sol",
-        "contracts/libraries/Math.sol",
-        "contracts/libraries/TransferHelper.sol",
-        "contracts/libraries/UQ112x112.sol",
-        "contracts/libraries/UniswapV2Library.sol",
-        "contracts/test/ERC20.sol",
-        "lib/forge-std/lib/ds-test/src/test.sol",
+        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\UniswapV2Factory.sol",
+        "contracts\\UniswapV2Pair.sol",
+        "contracts\\UniswapV2Router.sol",
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Callee.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\interfaces\\IUniswapV2Router.sol",
+        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\IWETH.sol",
+        "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\TransferHelper.sol",
+        "contracts\\libraries\\UQ112x112.sol",
+        "contracts\\libraries\\UniswapV2Library.sol",
+        "contracts\\test\\ERC20.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/Base.sol",
         "lib/forge-std/src/StdAssertions.sol",
         "lib/forge-std/src/StdChains.sol",
@@ -1689,9 +1689,9 @@
         "lib/forge-std/src/StdStorage.sol",
         "lib/forge-std/src/StdStyle.sol",
         "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src\\Test.sol",
         "lib/forge-std/src/Vm.sol",
-        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src\\console.sol",
         "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol",
         "lib/forge-std/src/safeconsole.sol"
@@ -1699,13 +1699,13 @@
       "versionRequirement": "^0.8.4",
       "artifacts": {
         "Fixture": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "Fixture.t.sol/Fixture.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "Fixture.t.sol\\Fixture.json"
         }
       }
     },
     "test/SwapTest.t.sol": {
-      "lastModificationDate": 1690295347483,
-      "contentHash": "cd0d26c283a91b6a5adf277ece911016",
+      "lastModificationDate": 1690381594840,
+      "contentHash": "cafeec643f846a290ff123eceb519395",
       "sourceName": "test/SwapTest.t.sol",
       "solcConfig": {
         "settings": {
@@ -1737,24 +1737,24 @@
         }
       },
       "imports": [
-        "contracts/UniswapV2ERC20.sol",
-        "contracts/UniswapV2Factory.sol",
-        "contracts/UniswapV2Pair.sol",
-        "contracts/UniswapV2Router.sol",
-        "contracts/interfaces/IERC20.sol",
-        "contracts/interfaces/IUniswapV2Callee.sol",
-        "contracts/interfaces/IUniswapV2ERC20.sol",
-        "contracts/interfaces/IUniswapV2Factory.sol",
-        "contracts/interfaces/IUniswapV2Pair.sol",
-        "contracts/interfaces/IUniswapV2Router.sol",
-        "contracts/interfaces/IUniswapV2Router01.sol",
-        "contracts/interfaces/IWETH.sol",
-        "contracts/libraries/Math.sol",
-        "contracts/libraries/TransferHelper.sol",
-        "contracts/libraries/UQ112x112.sol",
-        "contracts/libraries/UniswapV2Library.sol",
-        "contracts/test/ERC20.sol",
-        "lib/forge-std/lib/ds-test/src/test.sol",
+        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\UniswapV2Factory.sol",
+        "contracts\\UniswapV2Pair.sol",
+        "contracts\\UniswapV2Router.sol",
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Callee.sol",
+        "contracts\\interfaces\\IUniswapV2ERC20.sol",
+        "contracts\\interfaces\\IUniswapV2Factory.sol",
+        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\interfaces\\IUniswapV2Router.sol",
+        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\IWETH.sol",
+        "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\TransferHelper.sol",
+        "contracts\\libraries\\UQ112x112.sol",
+        "contracts\\libraries\\UniswapV2Library.sol",
+        "contracts\\test\\ERC20.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/Base.sol",
         "lib/forge-std/src/StdAssertions.sol",
         "lib/forge-std/src/StdChains.sol",
@@ -1766,18 +1766,18 @@
         "lib/forge-std/src/StdStorage.sol",
         "lib/forge-std/src/StdStyle.sol",
         "lib/forge-std/src/StdUtils.sol",
-        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src\\Test.sol",
         "lib/forge-std/src/Vm.sol",
-        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src\\console.sol",
         "lib/forge-std/src/console2.sol",
         "lib/forge-std/src/interfaces/IMulticall3.sol",
         "lib/forge-std/src/safeconsole.sol",
-        "test/Fixture.t.sol"
+        "test\\Fixture.t.sol"
       ],
       "versionRequirement": "^0.8.4",
       "artifacts": {
         "SwapTest": {
-          "0.8.4+commit.c7e474f2.Darwin.appleclang": "SwapTest.t.sol/SwapTest.json"
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SwapTest.t.sol\\SwapTest.json"
         }
       }
     }

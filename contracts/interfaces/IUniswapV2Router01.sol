@@ -97,7 +97,6 @@ interface IUniswapV2Router01 {
     function swapExactETHForTokens(
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
         uint256 startline,
         uint256 deadline,
         bytes calldata signature

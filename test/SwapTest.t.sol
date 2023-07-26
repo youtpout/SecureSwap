@@ -21,13 +21,27 @@ contract SwapTest is Fixture {
 
         uint256 deadline = block.timestamp + 1000;
 
-        routerContract.swapExactETHForTokens{value: 1 ether}(
+        bytes32 msgHash = routerContract.getMessageHash(
+            alice,
+            1 ether,
             1000,
             paths,
-            alice,
+            block.timestamp,
             deadline
         );
 
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, msgHash);
+        bytes memory signature = abi.encodePacked(r, s, v);
+
+        routerContract.swapExactETHForTokens{value: 1 ether}(
+            1000,
+            paths,
+            block.timestamp,
+            deadline,
+            signature
+        );
+
+        vm.stopPrank();
         assertGt(usdcToken.balanceOf(alice), 1000);
     }
 }

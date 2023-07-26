@@ -26,6 +26,9 @@ contract Fixture is Test {
     address charlie = makeAddr("Charlie");
     address daniel = makeAddr("Daniel");
 
+    uint256 internal signerPrivateKey = 0xabc123;
+    address king;
+
     uint256 public constant INITIAL_DEPLOYER_USDC_BALANCE = 100000;
     uint256 public constant INITIAL_DEPLOYER_WETH_BALANCE = 7500;
     uint256 public constant INITIAL_ACTOR_WETH_BALANCE = 1000;
@@ -48,6 +51,9 @@ contract Fixture is Test {
         vm.label(address(usdcToken), "USDC");
         vm.label(address(wEth), "WETH");
 
+        king = vm.addr(signerPrivateKey);
+        vm.label(king, "WETH");
+
         uint256 amountUsdc = 2_000_000 * 10 ** usdcToken.decimals();
         deal(address(usdcToken), deployer, 2 * amountUsdc);
         deal(deployer, 10_000 ether);
@@ -64,6 +70,7 @@ contract Fixture is Test {
         vm.label(address(routerContract), "router");
 
         factoryContract.setRouter(address(routerContract), true);
+        routerContract.setSigner(king, true);
 
         usdcToken.approve(address(routerContract), 2 * amountUsdc);
         uint256 deadline = block.timestamp + 1000000000000000;

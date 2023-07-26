@@ -18,13 +18,15 @@ contract UniswapV2Router is IUniswapV2Router {
     address public immutable override factory;
     address public immutable override WETH;
 
+    address public owner;
+
     bytes32 public DOMAIN_SEPARATOR;
     mapping(address => uint256) public nonces;
 
     mapping(address => bool) public authorizedSigners;
 
-    // keccak256("Swap(address caller,address to,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)");
-    bytes32 public constant PERMIT_TYPEHASH =
+    // keccak256("Swap(address caller,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)");
+    bytes32 public constant SWAP_TYPEHASH =
         0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
 
     modifier ensure(uint256 deadline) {
@@ -40,9 +42,16 @@ contract UniswapV2Router is IUniswapV2Router {
         _;
     }
 
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner");
+        _;
+    }
+
     constructor(address _factory, address _WETH) {
         factory = _factory;
         WETH = _WETH;
+
+        owner = msg.sender;
 
         DOMAIN_SEPARATOR = keccak256(
             abi.encode(
@@ -61,9 +70,17 @@ contract UniswapV2Router is IUniswapV2Router {
         assert(msg.sender == WETH); // only accept ETH via fallback from the WETH contract
     }
 
+    function setSigner(address signer, bool authorized) external onlyOwner {
+        authorizedSigners[signer] = authorized;
+    }
+
+    function setSigner(address newOwner) external onlyOwner {
+        require(newOwner != address(0), "Owner can't be address 0");
+        owner = newOwner;
+    }
+
     function getMessageHash(
         address caller,
-        address to,
         uint256 amountIn,
         uint256 amountOut,
         address[] calldata path,
@@ -77,9 +94,8 @@ contract UniswapV2Router is IUniswapV2Router {
                 DOMAIN_SEPARATOR,
                 keccak256(
                     abi.encode(
-                        PERMIT_TYPEHASH,
+                        SWAP_TYPEHASH,
                         caller,
-                        to,
                         amountIn,
                         amountOut,
                         path,
@@ -478,7 +494,6 @@ contract UniswapV2Router is IUniswapV2Router {
     function swapExactETHForTokens(
         uint256 amountOutMin,
         address[] calldata path,
-        address to,
         uint256 startline,
         uint256 deadline,
         bytes calldata signature
@@ -493,7 +508,6 @@ contract UniswapV2Router is IUniswapV2Router {
         require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
 
         _verifySignature(
-            to,
             msg.value,
             amountOutMin,
             path,
@@ -514,7 +528,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 amounts[0]
             )
         );
-        _swap(amounts, path, to);
+        _swap(amounts, path, msg.sender);
     }
 
     function swapTokensForExactETH(
@@ -758,7 +772,6 @@ contract UniswapV2Router is IUniswapV2Router {
     }
 
     function _verifySignature(
-        address to,
         uint256 amountIn,
         uint256 amountOut,
         address[] calldata path,
@@ -768,7 +781,6 @@ contract UniswapV2Router is IUniswapV2Router {
     ) private {
         bytes32 signedMessage = getMessageHash(
             msg.sender,
-            to,
             amountIn,
             amountOut,
             path,
