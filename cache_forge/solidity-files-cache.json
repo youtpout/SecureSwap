@@ -661,8 +661,8 @@
       }
     },
     "contracts/libraries/UniswapV2Library.sol": {
-      "lastModificationDate": 1690457286697,
-      "contentHash": "323ff7ffc9fc43887e6703b3dfdf017f",
+      "lastModificationDate": 1690464492320,
+      "contentHash": "6ca803fe8f27ce01006478a24aa0be05",
       "sourceName": "contracts/libraries/UniswapV2Library.sol",
       "solcConfig": {
         "settings": {
