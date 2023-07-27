@@ -46,6 +46,10 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
     error PairInvalidTo();
     error PairK();
 
+    constructor() {
+        factory = msg.sender;
+    }
+
     modifier lock() {
         if (unlocked == 0) {
             revert PairLocked();
@@ -62,33 +66,7 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         _;
     }
 
-    function getReserves()
-        public
-        view
-        override
-        returns (
-            uint112 _reserve0,
-            uint112 _reserve1,
-            uint32 _blockTimestampLast
-        )
-    {
-        _reserve0 = reserve0;
-        _reserve1 = reserve1;
-        _blockTimestampLast = blockTimestampLast;
-    }
-
-    function _safeTransfer(address token, address to, uint256 value) private {
-        (bool success, bytes memory data) = token.call(
-            abi.encodeWithSelector(IERC20.transfer.selector, to, value)
-        );
-        if (!success || (data.length > 0 && !abi.decode(data, (bool)))) {
-            revert PairTransferFailed();
-        }
-    }
-
-    constructor() {
-        factory = msg.sender;
-    }
+    /* External Functions */
 
     // called once by the factory at time of deployment
     function initialize(address _token0, address _token1) external override {
@@ -98,59 +76,6 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         }
         token0 = _token0;
         token1 = _token1;
-    }
-
-    // update reserves and, on the first call per block, price accumulators
-    function _update(
-        uint256 balance0,
-        uint256 balance1,
-        uint112 _reserve0,
-        uint112 _reserve1
-    ) private {
-        if (balance0 > type(uint112).max || balance1 > type(uint112).max) {
-            revert PairOverflow();
-        }
-        uint32 blockTimestamp = uint32(block.timestamp % 2 ** 32);
-        unchecked {
-            uint32 timeElapsed = blockTimestamp - blockTimestampLast; // overflow is desired
-            if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
-                // * never overflows, and + overflow is desired
-                price0CumulativeLast +=
-                    uint256(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) *
-                    timeElapsed;
-                price1CumulativeLast +=
-                    uint256(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) *
-                    timeElapsed;
-            }
-        }
-        reserve0 = uint112(balance0);
-        reserve1 = uint112(balance1);
-        blockTimestampLast = blockTimestamp;
-        emit Sync(reserve0, reserve1);
-    }
-
-    // if fee is on, mint liquidity equivalent to 1/6th of the growth in sqrt(k)
-    function _mintFee(
-        uint112 _reserve0,
-        uint112 _reserve1
-    ) private returns (bool feeOn) {
-        address feeTo = IUniswapV2Factory(factory).feeTo();
-        feeOn = feeTo != address(0);
-        uint256 _kLast = kLast; // gas savings
-        if (feeOn) {
-            if (_kLast != 0) {
-                uint256 rootK = Math.sqrt(uint256(_reserve0) * _reserve1);
-                uint256 rootKLast = Math.sqrt(_kLast);
-                if (rootK > rootKLast) {
-                    uint256 numerator = totalSupply * (rootK - rootKLast);
-                    uint256 denominator = rootK * 5 + rootKLast;
-                    uint256 liquidity = numerator / denominator;
-                    if (liquidity > 0) _mint(feeTo, liquidity);
-                }
-            }
-        } else if (_kLast != 0) {
-            kLast = 0;
-        }
     }
 
     // this low-level function should be called from a contract which performs important safety checks
@@ -292,5 +217,86 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
             reserve0,
             reserve1
         );
+    }
+
+    /* Public view Functions */
+
+    function getReserves()
+        public
+        view
+        override
+        returns (
+            uint112 _reserve0,
+            uint112 _reserve1,
+            uint32 _blockTimestampLast
+        )
+    {
+        _reserve0 = reserve0;
+        _reserve1 = reserve1;
+        _blockTimestampLast = blockTimestampLast;
+    }
+
+    /* Private Functions */
+
+    function _safeTransfer(address token, address to, uint256 value) private {
+        (bool success, bytes memory data) = token.call(
+            abi.encodeWithSelector(IERC20.transfer.selector, to, value)
+        );
+        if (!success || (data.length > 0 && !abi.decode(data, (bool)))) {
+            revert PairTransferFailed();
+        }
+    }
+
+    // update reserves and, on the first call per block, price accumulators
+    function _update(
+        uint256 balance0,
+        uint256 balance1,
+        uint112 _reserve0,
+        uint112 _reserve1
+    ) private {
+        if (balance0 > type(uint112).max || balance1 > type(uint112).max) {
+            revert PairOverflow();
+        }
+        uint32 blockTimestamp = uint32(block.timestamp % 2 ** 32);
+        unchecked {
+            uint32 timeElapsed = blockTimestamp - blockTimestampLast; // overflow is desired
+            if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
+                // * never overflows, and + overflow is desired
+                price0CumulativeLast +=
+                    uint256(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) *
+                    timeElapsed;
+                price1CumulativeLast +=
+                    uint256(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) *
+                    timeElapsed;
+            }
+        }
+        reserve0 = uint112(balance0);
+        reserve1 = uint112(balance1);
+        blockTimestampLast = blockTimestamp;
+        emit Sync(reserve0, reserve1);
+    }
+
+    // if fee is on, mint liquidity equivalent to 1/6th of the growth in sqrt(k)
+    function _mintFee(
+        uint112 _reserve0,
+        uint112 _reserve1
+    ) private returns (bool feeOn) {
+        address feeTo = IUniswapV2Factory(factory).feeTo();
+        feeOn = feeTo != address(0);
+        uint256 _kLast = kLast; // gas savings
+        if (feeOn) {
+            if (_kLast != 0) {
+                uint256 rootK = Math.sqrt(uint256(_reserve0) * _reserve1);
+                uint256 rootKLast = Math.sqrt(_kLast);
+                if (rootK > rootKLast) {
+                    uint256 numerator = totalSupply * (rootK - rootKLast);
+                    uint256 denominator = rootK * 5 + rootKLast;
+                    uint256 liquidity = numerator / denominator;
+                    if (liquidity > 0) _mint(feeTo, liquidity);
+                }
+            }
+        } else if (_kLast != 0) {
+            kLast = 0;
+        }
     }
 }
