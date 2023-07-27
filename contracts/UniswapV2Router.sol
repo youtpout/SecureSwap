@@ -34,8 +34,12 @@ contract UniswapV2Router is IUniswapV2Router {
     error RouterOutOfTime();
     error RouterZeroAddress();
     error RouterInsufficientOutputAmount();
+    error RouterInsufficientAAmount();
+    error RouterInsufficientBAmount();
     error RouterExcessiveInputAmount();
     error RouterInvalidPath();
+    error RouterInvalidSigner();
+    error RouterInvalidSignatureLength();
 
     constructor(address _factory, address _WETH) {
         factory = _factory;
@@ -317,10 +321,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
-        require(
-            amounts[0] <= amountInMax,
-            "UniswapV2Router: EXCESSIVE_INPUT_AMOUNT"
-        );
+        if (amounts[0] > amountInMax) {
+            revert RouterExcessiveInputAmount();
+        }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -398,10 +401,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
-        require(
-            amounts[0] <= amountInMax,
-            "UniswapV2Router: EXCESSIVE_INPUT_AMOUNT"
-        );
+        if (amounts[0] > amountInMax) {
+            revert RouterExcessiveInputAmount();
+        }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -482,10 +484,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
-        require(
-            amounts[0] <= msg.value,
-            "UniswapV2Router: EXCESSIVE_INPUT_AMOUNT"
-        );
+        if (amounts[0] > msg.value) {
+            revert RouterExcessiveInputAmount();
+        }
         IWETH(WETH).deposit{value: amounts[0]}();
         assert(
             IWETH(WETH).transfer(
@@ -526,12 +527,13 @@ contract UniswapV2Router is IUniswapV2Router {
             msg.sender
         );
         _swapSupportingFeeOnTransferTokens(path, msg.sender);
-        require(
+        if (
             IERC20(path[path.length - 1]).balanceOf(msg.sender) -
-                balanceBefore >=
-                amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+                balanceBefore <
+            amountOutMin
+        ) {
+            revert RouterInsufficientOutputAmount();
+        }
     }
 
     function swapExactETHForTokensSupportingFeeOnTransferTokens(
@@ -566,12 +568,13 @@ contract UniswapV2Router is IUniswapV2Router {
             msg.sender
         );
         _swapSupportingFeeOnTransferTokens(path, msg.sender);
-        require(
+        if (
             IERC20(path[path.length - 1]).balanceOf(msg.sender) -
-                balanceBefore >=
-                amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+                balanceBefore <
+            amountOutMin
+        ) {
+            revert RouterInsufficientOutputAmount();
+        }
     }
 
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
@@ -689,14 +692,12 @@ contract UniswapV2Router is IUniswapV2Router {
         (amountA, amountB) = tokenA == token0
             ? (amount0, amount1)
             : (amount1, amount0);
-        require(
-            amountA >= amountAMin,
-            "UniswapV2Router: INSUFFICIENT_A_AMOUNT"
-        );
-        require(
-            amountB >= amountBMin,
-            "UniswapV2Router: INSUFFICIENT_B_AMOUNT"
-        );
+        if (amountA < amountAMin) {
+            revert RouterInsufficientAAmount();
+        }
+        if (amountB < amountBMin) {
+            revert RouterInsufficientBAmount();
+        }
     }
 
     /* Public view Functions */
@@ -861,10 +862,9 @@ contract UniswapV2Router is IUniswapV2Router {
                 reserveB
             );
             if (amountBOptimal <= amountBDesired) {
-                require(
-                    amountBOptimal >= amountBMin,
-                    "UniswapV2Router: INSUFFICIENT_B_AMOUNT"
-                );
+                if (amountBOptimal < amountBMin) {
+                    revert RouterInsufficientBAmount();
+                }
                 (amountA, amountB) = (amountADesired, amountBOptimal);
             } else {
                 uint256 amountAOptimal = UniswapV2Library.quote(
@@ -873,10 +873,9 @@ contract UniswapV2Router is IUniswapV2Router {
                     reserveA
                 );
                 assert(amountAOptimal <= amountADesired);
-                require(
-                    amountAOptimal >= amountAMin,
-                    "UniswapV2Router: INSUFFICIENT_A_AMOUNT"
-                );
+                if (amountAOptimal < amountAMin) {
+                    revert RouterInsufficientAAmount();
+                }
                 (amountA, amountB) = (amountAOptimal, amountBDesired);
             }
         }
@@ -901,7 +900,9 @@ contract UniswapV2Router is IUniswapV2Router {
             deadline
         );
         address signer = _recoverSigner(signedMessage, signature);
-        require(authorizedSigners[signer], "Invalid signer");
+        if (!authorizedSigners[signer]) {
+            revert RouterInvalidSigner();
+        }
         nonces[msg.sender]++;
     }
 
@@ -917,7 +918,9 @@ contract UniswapV2Router is IUniswapV2Router {
     function _splitSignature(
         bytes memory sig
     ) private pure returns (bytes32 r, bytes32 s, uint8 v) {
-        require(sig.length == 65, "invalid signature length");
+        if (sig.length != 65) {
+            revert RouterInvalidSignatureLength();
+        }
 
         assembly {
             /*
