@@ -74,7 +74,7 @@ contract UniswapV2Router is IUniswapV2Router {
         authorizedSigners[signer] = authorized;
     }
 
-    function setSigner(address newOwner) external onlyOwner {
+    function setOwner(address newOwner) external onlyOwner {
         require(newOwner != address(0), "Owner can't be address 0");
         owner = newOwner;
     }

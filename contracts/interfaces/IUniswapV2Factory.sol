@@ -13,7 +13,7 @@ interface IUniswapV2Factory {
 
     function feeTo() external view returns (address);
 
-    function feeToSetter() external view returns (address);
+    function owner() external view returns (address);
 
     function getPair(
         address tokenA,
@@ -31,7 +31,7 @@ interface IUniswapV2Factory {
 
     function setFeeTo(address) external;
 
-    function setFeeToSetter(address) external;
+    function setOwner(address newOwner) external;
 
     function authorizedRouters(address) external returns (bool);
 

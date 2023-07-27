@@ -10,15 +10,28 @@ contract UniswapV2Factory is IUniswapV2Factory {
         keccak256(type(UniswapV2Pair).creationCode);
 
     address public override feeTo;
-    address public override feeToSetter;
+    address public override owner;
 
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
     mapping(address => bool) public override authorizedRouters;
 
-    constructor(address _feeToSetter) {
-        feeToSetter = _feeToSetter;
+    error OnlyOwner();
+    error ZeroAddress();
+    error IdenticalAddress();
+    error PairExists();
+    error NotAContract();
+
+    modifier onlyOwner() {
+        if (msg.sender != owner) {
+            revert OnlyOwner();
+        }
+        _;
+    }
+
+    constructor(address _owner) {
+        owner = _owner;
     }
 
     function allPairsLength() external view override returns (uint256) {
@@ -29,15 +42,20 @@ contract UniswapV2Factory is IUniswapV2Factory {
         address tokenA,
         address tokenB
     ) external override returns (address pair) {
-        require(tokenA != tokenB, "UniswapV2: IDENTICAL_ADDRESSES");
+        if (tokenA == tokenB) {
+            revert IdenticalAddress();
+        }
         (address token0, address token1) = tokenA < tokenB
             ? (tokenA, tokenB)
             : (tokenB, tokenA);
-        require(token0 != address(0), "UniswapV2: ZERO_ADDRESS");
-        require(
-            getPair[token0][token1] == address(0),
-            "UniswapV2: PAIR_EXISTS"
-        ); // single check is sufficient
+
+        if (token0 == address(0)) {
+            revert ZeroAddress();
+        }
+        if (getPair[token0][token1] != address(0)) {
+            // single check is sufficient
+            revert PairExists();
+        }
 
         pair = address(
             new UniswapV2Pair{
@@ -51,18 +69,32 @@ contract UniswapV2Factory is IUniswapV2Factory {
         emit PairCreated(token0, token1, pair, allPairs.length);
     }
 
-    function setFeeTo(address _feeTo) external override {
-        require(msg.sender == feeToSetter, "UniswapV2: FORBIDDEN");
+    function setFeeTo(address _feeTo) external override onlyOwner {
         feeTo = _feeTo;
     }
 
-    function setFeeToSetter(address _feeToSetter) external override {
-        require(msg.sender == feeToSetter, "UniswapV2: FORBIDDEN");
-        feeToSetter = _feeToSetter;
+    function setOwner(address newOwner) external override onlyOwner {
+        if (newOwner == address(0)) {
+            revert ZeroAddress();
+        }
+        owner = newOwner;
     }
 
-    function setRouter(address _router, bool authorized) external override {
-        require(msg.sender == feeToSetter, "UniswapV2: FORBIDDEN");
+    function setRouter(
+        address _router,
+        bool authorized
+    ) external override onlyOwner {
+        if (!_isContract(_router)) {
+            revert NotAContract();
+        }
         authorizedRouters[_router] = authorized;
+    }
+
+    function _isContract(address addr) private view returns (bool) {
+        uint256 size;
+        assembly {
+            size := extcodesize(addr)
+        }
+        return size > 0;
     }
 }

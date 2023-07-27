@@ -56,8 +56,8 @@
       }
     },
     "contracts/UniswapV2Factory.sol": {
-      "lastModificationDate": 1690363051539,
-      "contentHash": "ddb555e64eb6bd5f445b5e87f4571747",
+      "lastModificationDate": 1690455285745,
+      "contentHash": "967f7a726bee3a88cd95b88b7c8036f3",
       "sourceName": "contracts/UniswapV2Factory.sol",
       "solcConfig": {
         "settings": {
@@ -155,8 +155,8 @@
       }
     },
     "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690385008975,
-      "contentHash": "b90b52d95ebb85c5bc423568e002f79a",
+      "lastModificationDate": 1690449811718,
+      "contentHash": "d923e21e1622aa3c9f780495b3a0134a",
       "sourceName": "contracts/UniswapV2Router.sol",
       "solcConfig": {
         "settings": {
@@ -329,8 +329,8 @@
       }
     },
     "contracts/interfaces/IUniswapV2Factory.sol": {
-      "lastModificationDate": 1690363051541,
-      "contentHash": "c886ab62807ea3ee161140244419261e",
+      "lastModificationDate": 1690449843369,
+      "contentHash": "59608f283f7f08a3f24fda7357cfa1ac",
       "sourceName": "contracts/interfaces/IUniswapV2Factory.sol",
       "solcConfig": {
         "settings": {
