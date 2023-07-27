@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/UniswapV2ERC20.sol": {
-      "lastModificationDate": 1690474388823,
-      "contentHash": "71dfab2abcc4aea6f8ded64183224bd6",
+      "lastModificationDate": 1690477096639,
+      "contentHash": "319d2bb7130fe9eb4a5d930193c6a58b",
       "sourceName": "contracts/UniswapV2ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -155,8 +155,8 @@
       }
     },
     "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690476617967,
-      "contentHash": "66b9a8246cbf3733f043fbc4daa0b240",
+      "lastModificationDate": 1690477188201,
+      "contentHash": "41df9a1bd9ef20beebd7c0dee4afeaa4",
       "sourceName": "contracts/UniswapV2Router.sol",
       "solcConfig": {
         "settings": {
@@ -661,8 +661,8 @@
       }
     },
     "contracts/libraries/UniswapV2Library.sol": {
-      "lastModificationDate": 1690474551314,
-      "contentHash": "c41df1570b99ed91ee024d44d4b6eae2",
+      "lastModificationDate": 1690477215987,
+      "contentHash": "b3347497c7a21aec8be33b357018e375",
       "sourceName": "contracts/libraries/UniswapV2Library.sol",
       "solcConfig": {
         "settings": {
