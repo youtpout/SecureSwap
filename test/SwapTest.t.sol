@@ -2,7 +2,7 @@
 pragma solidity ^0.8.4;
 
 import {Fixture} from "test/Fixture.t.sol";
-import {UniswapV2Library} from "contracts/libraries/UniswapV2Library.sol";
+import {SecureLibrary} from "contracts/libraries/SecureLibrary.sol";
 import {Test, Vm} from "forge-std/Test.sol";
 import {console} from "forge-std/console.sol";
 

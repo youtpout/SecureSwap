@@ -2,15 +2,15 @@
 
 pragma solidity =0.8.4;
 
-import "./interfaces/IUniswapV2ERC20.sol";
+import "./interfaces/ISecureERC20.sol";
 
 //solhint-disable var-name-mixedcase
 //solhint-disable reason-string
 //solhint-disable const-name-snakecase
 
-contract UniswapV2ERC20 is IUniswapV2ERC20 {
-    string public constant override name = "Uniswap V2";
-    string public constant override symbol = "UNI-V2";
+contract SecureERC20 is ISecureERC20 {
+    string public constant override name = "Secure LP";
+    string public constant override symbol = "Cure-LP";
     uint8 public constant override decimals = 18;
     uint256 public override totalSupply;
     mapping(address => uint256) public override balanceOf;

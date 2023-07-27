@@ -5,9 +5,9 @@ pragma solidity >=0.5.0;
 
 //solhint-disable func-name-mixedcase
 
-import "./IUniswapV2ERC20.sol";
+import "./ISecureERC20.sol";
 
-interface IUniswapV2Pair is IUniswapV2ERC20 {
+interface ISecurePair is ISecureERC20 {
     event Mint(address indexed sender, uint256 amount0, uint256 amount1);
     event Burn(
         address indexed sender,

@@ -2,12 +2,12 @@
 
 pragma solidity =0.8.4;
 
-import "./interfaces/IUniswapV2Factory.sol";
-import "./UniswapV2Pair.sol";
+import "./interfaces/ISecureFactory.sol";
+import "./SecurePair.sol";
 
-contract UniswapV2Factory is IUniswapV2Factory {
+contract SecureFactory is ISecureFactory {
     bytes32 public constant PAIR_HASH =
-        keccak256(type(UniswapV2Pair).creationCode);
+        keccak256(type(SecurePair).creationCode);
 
     address public override feeTo;
     address public override owner;
@@ -56,11 +56,11 @@ contract UniswapV2Factory is IUniswapV2Factory {
         }
 
         pair = address(
-            new UniswapV2Pair{
+            new SecurePair{
                 salt: keccak256(abi.encodePacked(token0, token1))
             }()
         );
-        IUniswapV2Pair(pair).initialize(token0, token1);
+        ISecurePair(pair).initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

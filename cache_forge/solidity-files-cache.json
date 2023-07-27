@@ -12,10 +12,10 @@
     ]
   },
   "files": {
-    "contracts/UniswapV2ERC20.sol": {
-      "lastModificationDate": 1690477096639,
-      "contentHash": "319d2bb7130fe9eb4a5d930193c6a58b",
-      "sourceName": "contracts/UniswapV2ERC20.sol",
+    "contracts/SecureERC20.sol": {
+      "lastModificationDate": 1690478793006,
+      "contentHash": "9db9edc221a47e18bc3b5ae206c9b62c",
+      "sourceName": "contracts/SecureERC20.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -46,19 +46,19 @@
         }
       },
       "imports": [
-        "contracts\\interfaces\\IUniswapV2ERC20.sol"
+        "contracts\\interfaces\\ISecureERC20.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "UniswapV2ERC20": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2ERC20.sol\\UniswapV2ERC20.json"
+        "SecureERC20": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SecureERC20.sol\\SecureERC20.json"
         }
       }
     },
-    "contracts/UniswapV2Factory.sol": {
-      "lastModificationDate": 1690457083917,
-      "contentHash": "4b379154ba8c71949c443bafc8cf3a2d",
-      "sourceName": "contracts/UniswapV2Factory.sol",
+    "contracts/SecureFactory.sol": {
+      "lastModificationDate": 1690478646407,
+      "contentHash": "b02b8219c314d72427440a6fe5779c3f",
+      "sourceName": "contracts/SecureFactory.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -89,26 +89,26 @@
         }
       },
       "imports": [
-        "contracts\\UniswapV2ERC20.sol",
-        "contracts\\UniswapV2Pair.sol",
+        "contracts\\SecureERC20.sol",
+        "contracts\\SecurePair.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
         "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "UniswapV2Factory": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Factory.sol\\UniswapV2Factory.json"
+        "SecureFactory": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SecureFactory.sol\\SecureFactory.json"
         }
       }
     },
-    "contracts/UniswapV2Pair.sol": {
-      "lastModificationDate": 1690456986732,
-      "contentHash": "bc66688533396a994071d65fbebffeda",
-      "sourceName": "contracts/UniswapV2Pair.sol",
+    "contracts/SecurePair.sol": {
+      "lastModificationDate": 1690478710427,
+      "contentHash": "e1924219b1a186ca9812fccc469b54ec",
+      "sourceName": "contracts/SecurePair.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -139,25 +139,25 @@
         }
       },
       "imports": [
-        "contracts\\UniswapV2ERC20.sol",
+        "contracts\\SecureERC20.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
         "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "UniswapV2Pair": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Pair.sol\\UniswapV2Pair.json"
+        "SecurePair": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SecurePair.sol\\SecurePair.json"
         }
       }
     },
-    "contracts/UniswapV2Router.sol": {
-      "lastModificationDate": 1690478244413,
-      "contentHash": "3518c75f125439328bb7f199624c7da4",
-      "sourceName": "contracts/UniswapV2Router.sol",
+    "contracts/SecureRouter.sol": {
+      "lastModificationDate": 1690478812056,
+      "contentHash": "a8f7fda70d8b834b84cad12572f079be",
+      "sourceName": "contracts/SecureRouter.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -189,19 +189,19 @@
       },
       "imports": [
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol",
-        "contracts\\interfaces\\IUniswapV2Router.sol",
-        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
+        "contracts\\interfaces\\ISecureRouter.sol",
+        "contracts\\interfaces\\ISecureRouter01.sol",
         "contracts\\interfaces\\IWETH.sol",
-        "contracts\\libraries\\TransferHelper.sol",
-        "contracts\\libraries\\UniswapV2Library.sol"
+        "contracts\\libraries\\SecureLibrary.sol",
+        "contracts\\libraries\\TransferHelper.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "UniswapV2Router": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Router.sol\\UniswapV2Router.json"
+        "SecureRouter": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SecureRouter.sol\\SecureRouter.json"
         }
       }
     },
@@ -246,10 +246,10 @@
         }
       }
     },
-    "contracts/interfaces/IUniswapV2Callee.sol": {
-      "lastModificationDate": 1690363051541,
-      "contentHash": "ba3c21b5d43975097e26cf0416fc4a43",
-      "sourceName": "contracts/interfaces/IUniswapV2Callee.sol",
+    "contracts/interfaces/ISecureERC20.sol": {
+      "lastModificationDate": 1690478646408,
+      "contentHash": "cd891f2033d5e100275a9bd7341b7a30",
+      "sourceName": "contracts/interfaces/ISecureERC20.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -282,15 +282,15 @@
       "imports": [],
       "versionRequirement": ">=0.5.0",
       "artifacts": {
-        "IUniswapV2Callee": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Callee.sol\\IUniswapV2Callee.json"
+        "ISecureERC20": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ISecureERC20.sol\\ISecureERC20.json"
         }
       }
     },
-    "contracts/interfaces/IUniswapV2ERC20.sol": {
-      "lastModificationDate": 1690363051541,
-      "contentHash": "1c8de4b4047ac4c8387768645fc52977",
-      "sourceName": "contracts/interfaces/IUniswapV2ERC20.sol",
+    "contracts/interfaces/ISecureFactory.sol": {
+      "lastModificationDate": 1690478646411,
+      "contentHash": "21a8a343d59bcc9091cd7e73b062c3fa",
+      "sourceName": "contracts/interfaces/ISecureFactory.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -323,56 +323,15 @@
       "imports": [],
       "versionRequirement": ">=0.5.0",
       "artifacts": {
-        "IUniswapV2ERC20": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2ERC20.sol\\IUniswapV2ERC20.json"
+        "ISecureFactory": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ISecureFactory.sol\\ISecureFactory.json"
         }
       }
     },
-    "contracts/interfaces/IUniswapV2Factory.sol": {
-      "lastModificationDate": 1690449843369,
-      "contentHash": "59608f283f7f08a3f24fda7357cfa1ac",
-      "sourceName": "contracts/interfaces/IUniswapV2Factory.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "useLiteralContent": false,
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "paris",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": ">=0.5.0",
-      "artifacts": {
-        "IUniswapV2Factory": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Factory.sol\\IUniswapV2Factory.json"
-        }
-      }
-    },
-    "contracts/interfaces/IUniswapV2Pair.sol": {
-      "lastModificationDate": 1690381880583,
-      "contentHash": "c4ccbe8b5a86441356b5c670a44e8d29",
-      "sourceName": "contracts/interfaces/IUniswapV2Pair.sol",
+    "contracts/interfaces/ISecurePair.sol": {
+      "lastModificationDate": 1690478646408,
+      "contentHash": "309708c732d49edd148f75e748144eaa",
+      "sourceName": "contracts/interfaces/ISecurePair.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -403,19 +362,19 @@
         }
       },
       "imports": [
-        "contracts\\interfaces\\IUniswapV2ERC20.sol"
+        "contracts\\interfaces\\ISecureERC20.sol"
       ],
       "versionRequirement": ">=0.5.0",
       "artifacts": {
-        "IUniswapV2Pair": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Pair.sol\\IUniswapV2Pair.json"
+        "ISecurePair": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ISecurePair.sol\\ISecurePair.json"
         }
       }
     },
-    "contracts/interfaces/IUniswapV2Router.sol": {
-      "lastModificationDate": 1690382683113,
-      "contentHash": "4cb09303f0fb5b452268136633d1ac0d",
-      "sourceName": "contracts/interfaces/IUniswapV2Router.sol",
+    "contracts/interfaces/ISecureRouter.sol": {
+      "lastModificationDate": 1690478646410,
+      "contentHash": "8ab5bce17d74718003f3d9595a82b89d",
+      "sourceName": "contracts/interfaces/ISecureRouter.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -446,19 +405,19 @@
         }
       },
       "imports": [
-        "contracts\\interfaces\\IUniswapV2Router01.sol"
+        "contracts\\interfaces\\ISecureRouter01.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "IUniswapV2Router": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Router.sol\\IUniswapV2Router.json"
+        "ISecureRouter": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ISecureRouter.sol\\ISecureRouter.json"
         }
       }
     },
-    "contracts/interfaces/IUniswapV2Router01.sol": {
-      "lastModificationDate": 1690382654828,
-      "contentHash": "6851cbd1f48e19509977248aac837068",
-      "sourceName": "contracts/interfaces/IUniswapV2Router01.sol",
+    "contracts/interfaces/ISecureRouter01.sol": {
+      "lastModificationDate": 1690478646410,
+      "contentHash": "905565b607c80410fed23fb6bb73f798",
+      "sourceName": "contracts/interfaces/ISecureRouter01.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -491,8 +450,8 @@
       "imports": [],
       "versionRequirement": "=0.8.4",
       "artifacts": {
-        "IUniswapV2Router01": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "IUniswapV2Router01.sol\\IUniswapV2Router01.json"
+        "ISecureRouter01": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "ISecureRouter01.sol\\ISecureRouter01.json"
         }
       }
     },
@@ -578,6 +537,50 @@
         }
       }
     },
+    "contracts/libraries/SecureLibrary.sol": {
+      "lastModificationDate": 1690478832786,
+      "contentHash": "3beb4278e7cf4c5b868cb397d61a9382",
+      "sourceName": "contracts/libraries/SecureLibrary.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "useLiteralContent": false,
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecurePair.sol"
+      ],
+      "versionRequirement": "=0.8.4",
+      "artifacts": {
+        "SecureLibrary": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "SecureLibrary.sol\\SecureLibrary.json"
+        }
+      }
+    },
     "contracts/libraries/TransferHelper.sol": {
       "lastModificationDate": 1690460568076,
       "contentHash": "01a7edf993bb0cbe08d872e9b1f23839",
@@ -660,53 +663,9 @@
         }
       }
     },
-    "contracts/libraries/UniswapV2Library.sol": {
-      "lastModificationDate": 1690477215987,
-      "contentHash": "b3347497c7a21aec8be33b357018e375",
-      "sourceName": "contracts/libraries/UniswapV2Library.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "useLiteralContent": false,
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "paris",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol"
-      ],
-      "versionRequirement": "=0.8.4",
-      "artifacts": {
-        "UniswapV2Library": {
-          "0.8.4+commit.c7e474f2.Windows.msvc": "UniswapV2Library.sol\\UniswapV2Library.json"
-        }
-      }
-    },
     "contracts/test/ERC20.sol": {
-      "lastModificationDate": 1690363051545,
-      "contentHash": "e0d9dde455e23a9aeca0be7b3f990978",
+      "lastModificationDate": 1690478646411,
+      "contentHash": "2767d7c33cbfc326dacb2e1603fe980b",
       "sourceName": "contracts/test/ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -738,8 +697,8 @@
         }
       },
       "imports": [
-        "contracts\\UniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol"
+        "contracts\\SecureERC20.sol",
+        "contracts\\interfaces\\ISecureERC20.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -749,8 +708,8 @@
       }
     },
     "contracts/test/RouterEventEmitter.sol": {
-      "lastModificationDate": 1690363051545,
-      "contentHash": "fb3fdc10cd853e4184709241d3bec0e8",
+      "lastModificationDate": 1690478646411,
+      "contentHash": "29063492e16089c06658822ca1e070f8",
       "sourceName": "contracts/test/RouterEventEmitter.sol",
       "solcConfig": {
         "settings": {
@@ -782,7 +741,7 @@
         }
       },
       "imports": [
-        "contracts\\interfaces\\IUniswapV2Router01.sol"
+        "contracts\\interfaces\\ISecureRouter01.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -1624,8 +1583,8 @@
       }
     },
     "test/Fixture.t.sol": {
-      "lastModificationDate": 1690477318270,
-      "contentHash": "bfe62d636e3f50307cd6d0a23be03abd",
+      "lastModificationDate": 1690478646411,
+      "contentHash": "88b77b29948264819ad709d9f6f2feb1",
       "sourceName": "test/Fixture.t.sol",
       "solcConfig": {
         "settings": {
@@ -1657,21 +1616,21 @@
         }
       },
       "imports": [
-        "contracts\\UniswapV2ERC20.sol",
-        "contracts\\UniswapV2Factory.sol",
-        "contracts\\UniswapV2Pair.sol",
-        "contracts\\UniswapV2Router.sol",
+        "contracts\\SecureERC20.sol",
+        "contracts\\SecureFactory.sol",
+        "contracts\\SecurePair.sol",
+        "contracts\\SecureRouter.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol",
-        "contracts\\interfaces\\IUniswapV2Router.sol",
-        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
+        "contracts\\interfaces\\ISecureRouter.sol",
+        "contracts\\interfaces\\ISecureRouter01.sol",
         "contracts\\interfaces\\IWETH.sol",
         "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\SecureLibrary.sol",
         "contracts\\libraries\\TransferHelper.sol",
         "contracts\\libraries\\UQ112x112.sol",
-        "contracts\\libraries\\UniswapV2Library.sol",
         "contracts\\test\\ERC20.sol",
         "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/Base.sol",
@@ -1700,8 +1659,8 @@
       }
     },
     "test/SwapTest.t.sol": {
-      "lastModificationDate": 1690381823196,
-      "contentHash": "a3b106831883158bfd93482e749926d4",
+      "lastModificationDate": 1690478646411,
+      "contentHash": "6e1733a068a1361a27eca0b891b43b4d",
       "sourceName": "test/SwapTest.t.sol",
       "solcConfig": {
         "settings": {
@@ -1733,21 +1692,21 @@
         }
       },
       "imports": [
-        "contracts\\UniswapV2ERC20.sol",
-        "contracts\\UniswapV2Factory.sol",
-        "contracts\\UniswapV2Pair.sol",
-        "contracts\\UniswapV2Router.sol",
+        "contracts\\SecureERC20.sol",
+        "contracts\\SecureFactory.sol",
+        "contracts\\SecurePair.sol",
+        "contracts\\SecureRouter.sol",
         "contracts\\interfaces\\IERC20.sol",
-        "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
-        "contracts\\interfaces\\IUniswapV2Pair.sol",
-        "contracts\\interfaces\\IUniswapV2Router.sol",
-        "contracts\\interfaces\\IUniswapV2Router01.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
+        "contracts\\interfaces\\ISecureRouter.sol",
+        "contracts\\interfaces\\ISecureRouter01.sol",
         "contracts\\interfaces\\IWETH.sol",
         "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\SecureLibrary.sol",
         "contracts\\libraries\\TransferHelper.sol",
         "contracts\\libraries\\UQ112x112.sol",
-        "contracts\\libraries\\UniswapV2Library.sol",
         "contracts\\test\\ERC20.sol",
         "lib/forge-std/lib/ds-test/src\\test.sol",
         "lib/forge-std/src/Base.sol",

@@ -4,8 +4,8 @@ pragma solidity ^0.8.4;
 import {Test, Vm} from "forge-std/Test.sol";
 import {console} from "forge-std/console.sol";
 import {ERC20} from "contracts/test/ERC20.sol";
-import {UniswapV2Factory} from "contracts/UniswapV2Factory.sol";
-import {UniswapV2Router} from "contracts/UniswapV2Router.sol";
+import {SecureFactory} from "contracts/SecureFactory.sol";
+import {SecureRouter} from "contracts/SecureRouter.sol";
 
 contract Fixture is Test {
     ERC20 public constant usdtToken =
@@ -17,8 +17,8 @@ contract Fixture is Test {
     ERC20 public constant wEth =
         ERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
-    UniswapV2Factory public factoryContract;
-    UniswapV2Router public routerContract;
+    SecureFactory public factoryContract;
+    SecureRouter public routerContract;
 
     address deployer = makeAddr("Deployer");
     address alice = makeAddr("Alice");
@@ -60,10 +60,10 @@ contract Fixture is Test {
 
         vm.startPrank(deployer);
         // 1e16 0.01 ether
-        factoryContract = new UniswapV2Factory(deployer);        
+        factoryContract = new SecureFactory(deployer);        
         console.log("Pair hash");
         console.logBytes32(factoryContract.PAIR_HASH());
-        routerContract = new UniswapV2Router(
+        routerContract = new SecureRouter(
             address(factoryContract),
             address(wEth)
         );

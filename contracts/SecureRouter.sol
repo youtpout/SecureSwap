@@ -6,15 +6,15 @@ pragma solidity =0.8.4;
 //solhint-disable var-name-mixedcase
 //solhint-disable reason-string
 
-import "./interfaces/IUniswapV2Factory.sol";
+import "./interfaces/ISecureFactory.sol";
 import "./libraries/TransferHelper.sol";
 
-import "./interfaces/IUniswapV2Router.sol";
-import "./libraries/UniswapV2Library.sol";
+import "./interfaces/ISecureRouter.sol";
+import "./libraries/SecureLibrary.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/IWETH.sol";
 
-contract UniswapV2Router is IUniswapV2Router {
+contract SecureRouter is ISecureRouter {
     address public immutable override factory;
     address public immutable override WETH;
 
@@ -52,7 +52,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 keccak256(
                     "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
                 ),
-                keccak256(bytes("SecureSwap Router")),
+                keccak256(bytes("Secure Router")),
                 keccak256(bytes("1")),
                 block.chainid,
                 address(this)
@@ -121,10 +121,10 @@ contract UniswapV2Router is IUniswapV2Router {
             amountAMin,
             amountBMin
         );
-        address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
+        address pair = SecureLibrary.pairFor(factory, tokenA, tokenB);
         TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountA);
         TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountB);
-        liquidity = IUniswapV2Pair(pair).mint(to);
+        liquidity = ISecurePair(pair).mint(to);
     }
 
     function addLiquidityETH(
@@ -150,11 +150,11 @@ contract UniswapV2Router is IUniswapV2Router {
             amountTokenMin,
             amountETHMin
         );
-        address pair = UniswapV2Library.pairFor(factory, token, WETH);
+        address pair = SecureLibrary.pairFor(factory, token, WETH);
         TransferHelper.safeTransferFrom(token, msg.sender, pair, amountToken);
         IWETH(WETH).deposit{value: amountETH}();
         assert(IWETH(WETH).transfer(pair, amountETH));
-        liquidity = IUniswapV2Pair(pair).mint(to);
+        liquidity = ISecurePair(pair).mint(to);
         // refund dust eth, if any
         if (msg.value > amountETH)
             TransferHelper.safeTransferETH(msg.sender, msg.value - amountETH);
@@ -173,9 +173,9 @@ contract UniswapV2Router is IUniswapV2Router {
         bytes32 r,
         bytes32 s
     ) external virtual override returns (uint256 amountA, uint256 amountB) {
-        address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
+        address pair = SecureLibrary.pairFor(factory, tokenA, tokenB);
         uint256 value = approveMax ? type(uint256).max : liquidity;
-        IUniswapV2Pair(pair).permit(
+        ISecurePair(pair).permit(
             msg.sender,
             address(this),
             value,
@@ -207,9 +207,9 @@ contract UniswapV2Router is IUniswapV2Router {
         bytes32 r,
         bytes32 s
     ) public virtual override returns (uint256 amountToken, uint256 amountETH) {
-        address pair = UniswapV2Library.pairFor(factory, token, WETH);
+        address pair = SecureLibrary.pairFor(factory, token, WETH);
         uint256 value = approveMax ? type(uint256).max : liquidity;
-        IUniswapV2Pair(pair).permit(
+        ISecurePair(pair).permit(
             msg.sender,
             address(this),
             value,
@@ -240,9 +240,9 @@ contract UniswapV2Router is IUniswapV2Router {
         bytes32 r,
         bytes32 s
     ) external virtual override returns (uint256 amountETH) {
-        address pair = UniswapV2Library.pairFor(factory, token, WETH);
+        address pair = SecureLibrary.pairFor(factory, token, WETH);
         uint256 value = approveMax ? type(uint256).max : liquidity;
-        IUniswapV2Pair(pair).permit(
+        ISecurePair(pair).permit(
             msg.sender,
             address(this),
             value,
@@ -284,14 +284,14 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
+        amounts = SecureLibrary.getAmountsOut(factory, amountIn, path);
         if (amounts[amounts.length - 1] < amountOutMin) {
             revert RouterInsufficientOutputAmount();
         }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
         _swap(amounts, path, msg.sender);
@@ -320,14 +320,14 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
+        amounts = SecureLibrary.getAmountsIn(factory, amountOut, path);
         if (amounts[0] > amountInMax) {
             revert RouterExcessiveInputAmount();
         }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
         _swap(amounts, path, msg.sender);
@@ -360,14 +360,14 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsOut(factory, msg.value, path);
+        amounts = SecureLibrary.getAmountsOut(factory, msg.value, path);
         if (amounts[amounts.length - 1] < amountOutMin) {
             revert RouterInsufficientOutputAmount();
         }
         IWETH(WETH).deposit{value: amounts[0]}();
         assert(
             IWETH(WETH).transfer(
-                UniswapV2Library.pairFor(factory, path[0], path[1]),
+                SecureLibrary.pairFor(factory, path[0], path[1]),
                 amounts[0]
             )
         );
@@ -400,14 +400,14 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
+        amounts = SecureLibrary.getAmountsIn(factory, amountOut, path);
         if (amounts[0] > amountInMax) {
             revert RouterExcessiveInputAmount();
         }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
         _swap(amounts, path, address(this));
@@ -441,7 +441,7 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
+        amounts = SecureLibrary.getAmountsOut(factory, amountIn, path);
 
         if (amounts[amounts.length - 1] < amountOutMin) {
             revert RouterInsufficientOutputAmount();
@@ -449,7 +449,7 @@ contract UniswapV2Router is IUniswapV2Router {
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amounts[0]
         );
         _swap(amounts, path, address(this));
@@ -483,14 +483,14 @@ contract UniswapV2Router is IUniswapV2Router {
             signature
         );
 
-        amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
+        amounts = SecureLibrary.getAmountsIn(factory, amountOut, path);
         if (amounts[0] > msg.value) {
             revert RouterExcessiveInputAmount();
         }
         IWETH(WETH).deposit{value: amounts[0]}();
         assert(
             IWETH(WETH).transfer(
-                UniswapV2Library.pairFor(factory, path[0], path[1]),
+                SecureLibrary.pairFor(factory, path[0], path[1]),
                 amounts[0]
             )
         );
@@ -520,7 +520,7 @@ contract UniswapV2Router is IUniswapV2Router {
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amountIn
         );
         uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(
@@ -560,7 +560,7 @@ contract UniswapV2Router is IUniswapV2Router {
         IWETH(WETH).deposit{value: amountIn}();
         assert(
             IWETH(WETH).transfer(
-                UniswapV2Library.pairFor(factory, path[0], path[1]),
+                SecureLibrary.pairFor(factory, path[0], path[1]),
                 amountIn
             )
         );
@@ -600,7 +600,7 @@ contract UniswapV2Router is IUniswapV2Router {
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
+            SecureLibrary.pairFor(factory, path[0], path[1]),
             amountIn
         );
         _swapSupportingFeeOnTransferTokens(path, address(this));
@@ -685,10 +685,10 @@ contract UniswapV2Router is IUniswapV2Router {
         ensure(deadline)
         returns (uint256 amountA, uint256 amountB)
     {
-        address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
-        IUniswapV2Pair(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
-        (uint256 amount0, uint256 amount1) = IUniswapV2Pair(pair).burn(to);
-        (address token0, ) = UniswapV2Library.sortTokens(tokenA, tokenB);
+        address pair = SecureLibrary.pairFor(factory, tokenA, tokenB);
+        ISecurePair(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
+        (uint256 amount0, uint256 amount1) = ISecurePair(pair).burn(to);
+        (address token0, ) = SecureLibrary.sortTokens(tokenA, tokenB);
         (amountA, amountB) = tokenA == token0
             ? (amount0, amount1)
             : (amount1, amount0);
@@ -737,14 +737,14 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountIn,
         address[] memory path
     ) public view virtual override returns (uint256[] memory amounts) {
-        return UniswapV2Library.getAmountsOut(factory, amountIn, path);
+        return SecureLibrary.getAmountsOut(factory, amountIn, path);
     }
 
     function getAmountsIn(
         uint256 amountOut,
         address[] memory path
     ) public view virtual override returns (uint256[] memory amounts) {
-        return UniswapV2Library.getAmountsIn(factory, amountOut, path);
+        return SecureLibrary.getAmountsIn(factory, amountOut, path);
     }
 
     /* Public pure Functions */
@@ -754,7 +754,7 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 reserveA,
         uint256 reserveB
     ) public pure virtual override returns (uint256 amountB) {
-        return UniswapV2Library.quote(amountA, reserveA, reserveB);
+        return SecureLibrary.quote(amountA, reserveA, reserveB);
     }
 
     function getAmountOut(
@@ -762,7 +762,7 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 reserveIn,
         uint256 reserveOut
     ) public pure virtual override returns (uint256 amountOut) {
-        return UniswapV2Library.getAmountOut(amountIn, reserveIn, reserveOut);
+        return SecureLibrary.getAmountOut(amountIn, reserveIn, reserveOut);
     }
 
     function getAmountIn(
@@ -770,7 +770,7 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 reserveIn,
         uint256 reserveOut
     ) public pure virtual override returns (uint256 amountIn) {
-        return UniswapV2Library.getAmountIn(amountOut, reserveIn, reserveOut);
+        return SecureLibrary.getAmountIn(amountOut, reserveIn, reserveOut);
     }
 
     /* Internal Functions */
@@ -784,15 +784,15 @@ contract UniswapV2Router is IUniswapV2Router {
     ) internal virtual {
         for (uint256 i; i < path.length - 1; i++) {
             (address input, address output) = (path[i], path[i + 1]);
-            (address token0, ) = UniswapV2Library.sortTokens(input, output);
+            (address token0, ) = SecureLibrary.sortTokens(input, output);
             uint256 amountOut = amounts[i + 1];
             (uint256 amount0Out, uint256 amount1Out) = input == token0
                 ? (uint256(0), amountOut)
                 : (amountOut, uint256(0));
             address to = i < path.length - 2
-                ? UniswapV2Library.pairFor(factory, output, path[i + 2])
+                ? SecureLibrary.pairFor(factory, output, path[i + 2])
                 : _to;
-            IUniswapV2Pair(UniswapV2Library.pairFor(factory, input, output))
+            ISecurePair(SecureLibrary.pairFor(factory, input, output))
                 .swap(amount0Out, amount1Out, to);
         }
     }
@@ -805,9 +805,9 @@ contract UniswapV2Router is IUniswapV2Router {
     ) internal virtual {
         for (uint256 i; i < path.length - 1; i++) {
             (address input, address output) = (path[i], path[i + 1]);
-            (address token0, ) = UniswapV2Library.sortTokens(input, output);
-            IUniswapV2Pair pair = IUniswapV2Pair(
-                UniswapV2Library.pairFor(factory, input, output)
+            (address token0, ) = SecureLibrary.sortTokens(input, output);
+            ISecurePair pair = ISecurePair(
+                SecureLibrary.pairFor(factory, input, output)
             );
             uint256 amountInput;
             uint256 amountOutput;
@@ -820,7 +820,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 amountInput =
                     IERC20(input).balanceOf(address(pair)) -
                     reserveInput;
-                amountOutput = UniswapV2Library.getAmountOut(
+                amountOutput = SecureLibrary.getAmountOut(
                     amountInput,
                     reserveInput,
                     reserveOutput
@@ -830,7 +830,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 ? (uint256(0), amountOutput)
                 : (amountOutput, uint256(0));
             address to = i < path.length - 2
-                ? UniswapV2Library.pairFor(factory, output, path[i + 2])
+                ? SecureLibrary.pairFor(factory, output, path[i + 2])
                 : _to;
             pair.swap(amount0Out, amount1Out, to);
         }
@@ -845,10 +845,10 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 amountBMin
     ) internal virtual returns (uint256 amountA, uint256 amountB) {
         // create the pair if it doesn't exist yet
-        if (IUniswapV2Factory(factory).getPair(tokenA, tokenB) == address(0)) {
-            IUniswapV2Factory(factory).createPair(tokenA, tokenB);
+        if (ISecureFactory(factory).getPair(tokenA, tokenB) == address(0)) {
+            ISecureFactory(factory).createPair(tokenA, tokenB);
         }
-        (uint256 reserveA, uint256 reserveB) = UniswapV2Library.getReserves(
+        (uint256 reserveA, uint256 reserveB) = SecureLibrary.getReserves(
             factory,
             tokenA,
             tokenB
@@ -856,7 +856,7 @@ contract UniswapV2Router is IUniswapV2Router {
         if (reserveA == 0 && reserveB == 0) {
             (amountA, amountB) = (amountADesired, amountBDesired);
         } else {
-            uint256 amountBOptimal = UniswapV2Library.quote(
+            uint256 amountBOptimal = SecureLibrary.quote(
                 amountADesired,
                 reserveA,
                 reserveB
@@ -867,7 +867,7 @@ contract UniswapV2Router is IUniswapV2Router {
                 }
                 (amountA, amountB) = (amountADesired, amountBOptimal);
             } else {
-                uint256 amountAOptimal = UniswapV2Library.quote(
+                uint256 amountAOptimal = SecureLibrary.quote(
                     amountBDesired,
                     reserveB,
                     reserveA

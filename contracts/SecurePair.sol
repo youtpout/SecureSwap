@@ -2,19 +2,19 @@
 
 pragma solidity =0.8.4;
 
-import "./interfaces/IUniswapV2Pair.sol";
-import "./UniswapV2ERC20.sol";
+import "./interfaces/ISecurePair.sol";
+import "./SecureERC20.sol";
 import "./libraries/Math.sol";
 import "./libraries/UQ112x112.sol";
 import "./interfaces/IERC20.sol";
-import "./interfaces/IUniswapV2Factory.sol";
+import "./interfaces/ISecureFactory.sol";
 
 //solhint-disable func-name-mixedcase
 //solhint-disable avoid-low-level-calls
 //solhint-disable reason-string
 //solhint-disable not-rely-on-time
 
-contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
+contract SecurePair is ISecurePair, SecureERC20 {
     using UQ112x112 for uint224;
 
     uint256 public constant override MINIMUM_LIQUIDITY = 10 ** 3;
@@ -60,7 +60,7 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
     }
 
     modifier onlyAuthorizedRouters() {
-        if (!IUniswapV2Factory(factory).authorizedRouters(msg.sender)) {
+        if (!ISecureFactory(factory).authorizedRouters(msg.sender)) {
             revert PairNotAuthorizedRouter();
         }
         _;
@@ -281,7 +281,7 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         uint112 _reserve0,
         uint112 _reserve1
     ) private returns (bool feeOn) {
-        address feeTo = IUniswapV2Factory(factory).feeTo();
+        address feeTo = ISecureFactory(factory).feeTo();
         feeOn = feeTo != address(0);
         uint256 _kLast = kLast; // gas savings
         if (feeOn) {

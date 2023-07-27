@@ -4,9 +4,9 @@ pragma solidity =0.8.4;
 
 //solhint-disable reason-string
 
-import "../interfaces/IUniswapV2Pair.sol";
+import "../interfaces/ISecurePair.sol";
 
-library UniswapV2Library {
+library SecureLibrary {
     error LibraryZeroAddress();
     error LibraryIdenticalAddress();
     error LibraryInsufficientLiquidity();
@@ -22,7 +22,7 @@ library UniswapV2Library {
         address tokenB
     ) internal view returns (uint256 reserveA, uint256 reserveB) {
         (address token0, ) = sortTokens(tokenA, tokenB);
-        (uint256 reserve0, uint256 reserve1, ) = IUniswapV2Pair(
+        (uint256 reserve0, uint256 reserve1, ) = ISecurePair(
             pairFor(factory, tokenA, tokenB)
         ).getReserves();
         (reserveA, reserveB) = tokenA == token0
@@ -103,7 +103,7 @@ library UniswapV2Library {
                             bytes1(0xff),
                             factory,
                             keccak256(abi.encodePacked(token0, token1)),
-                            hex"a59fe2e5699886400b9882db47493ec268467f149736ee4fe46c33cefea5506e" // init code hash
+                            hex"54debdce91225189ec8eaa845adbf223ff5a974468aac0c29377af1eadb00f2c" // init code hash
                         )
                     )
                 )
