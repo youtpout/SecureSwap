@@ -52,7 +52,7 @@ contract Fixture is Test {
         vm.label(address(wEth), "WETH");
 
         king = vm.addr(signerPrivateKey);
-        vm.label(king, "WETH");
+        vm.label(king, "King");
 
         uint256 amountUsdc = 2_000_000 * 10 ** usdcToken.decimals();
         deal(address(usdcToken), deployer, 2 * amountUsdc);

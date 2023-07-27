@@ -33,6 +33,9 @@ contract UniswapV2Router is IUniswapV2Router {
     error RouterExpired();
     error RouterOutOfTime();
     error RouterZeroAddress();
+    error RouterInsufficientOutputAmount();
+    error RouterExcessiveInputAmount();
+    error RouterInvalidPath();
 
     constructor(address _factory, address _WETH) {
         factory = _factory;
@@ -278,10 +281,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
-        require(
-            amounts[amounts.length - 1] >= amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+        if (amounts[amounts.length - 1] < amountOutMin) {
+            revert RouterInsufficientOutputAmount();
+        }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -342,7 +344,9 @@ contract UniswapV2Router is IUniswapV2Router {
         ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
-        require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
+        if (path[0] != WETH) {
+            revert RouterInvalidPath();
+        }
 
         _verifySignature(
             msg.value,
@@ -354,10 +358,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsOut(factory, msg.value, path);
-        require(
-            amounts[amounts.length - 1] >= amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+        if (amounts[amounts.length - 1] < amountOutMin) {
+            revert RouterInsufficientOutputAmount();
+        }
         IWETH(WETH).deposit{value: amounts[0]}();
         assert(
             IWETH(WETH).transfer(
@@ -382,8 +385,9 @@ contract UniswapV2Router is IUniswapV2Router {
         ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
-        require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
-
+        if (path[path.length - 1] != WETH) {
+            revert RouterInvalidPath();
+        }
         _verifySignature(
             amountInMax,
             amountOut,
@@ -423,8 +427,9 @@ contract UniswapV2Router is IUniswapV2Router {
         ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
-        require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
-
+        if (path[path.length - 1] != WETH) {
+            revert RouterInvalidPath();
+        }
         _verifySignature(
             amountIn,
             amountOutMin,
@@ -435,10 +440,10 @@ contract UniswapV2Router is IUniswapV2Router {
         );
 
         amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
-        require(
-            amounts[amounts.length - 1] >= amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+
+        if (amounts[amounts.length - 1] < amountOutMin) {
+            revert RouterInsufficientOutputAmount();
+        }
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -464,8 +469,9 @@ contract UniswapV2Router is IUniswapV2Router {
         ensureSwap(startline, deadline)
         returns (uint256[] memory amounts)
     {
-        require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
-
+        if (path[0] != WETH) {
+            revert RouterInvalidPath();
+        }
         _verifySignature(
             msg.value,
             amountOut,
@@ -535,7 +541,9 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 deadline,
         bytes calldata signature
     ) external payable virtual override ensure(deadline) {
-        require(path[0] == WETH, "UniswapV2Router: INVALID_PATH");
+        if (path[0] != WETH) {
+            revert RouterInvalidPath();
+        }
 
         _verifySignature(
             msg.value,
@@ -574,8 +582,9 @@ contract UniswapV2Router is IUniswapV2Router {
         uint256 deadline,
         bytes calldata signature
     ) external virtual override ensureSwap(startline, deadline) {
-        require(path[path.length - 1] == WETH, "UniswapV2Router: INVALID_PATH");
-
+        if (path[path.length - 1] != WETH) {
+            revert RouterInvalidPath();
+        }
         _verifySignature(
             amountIn,
             amountOutMin,
@@ -593,10 +602,9 @@ contract UniswapV2Router is IUniswapV2Router {
         );
         _swapSupportingFeeOnTransferTokens(path, address(this));
         uint256 amountOut = IERC20(WETH).balanceOf(address(this));
-        require(
-            amountOut >= amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
+        if (amountOut < amountOutMin) {
+            revert RouterInsufficientOutputAmount();
+        }
         IWETH(WETH).withdraw(amountOut);
         TransferHelper.safeTransferETH(msg.sender, amountOut);
     }
