@@ -661,8 +661,8 @@
       }
     },
     "contracts/libraries/UniswapV2Library.sol": {
-      "lastModificationDate": 1690363051544,
-      "contentHash": "f374008b12634d8d84c84f6968df0fcb",
+      "lastModificationDate": 1690457286697,
+      "contentHash": "323ff7ffc9fc43887e6703b3dfdf017f",
       "sourceName": "contracts/libraries/UniswapV2Library.sol",
       "solcConfig": {
         "settings": {
@@ -695,7 +695,6 @@
       },
       "imports": [
         "contracts\\interfaces\\IUniswapV2ERC20.sol",
-        "contracts\\interfaces\\IUniswapV2Factory.sol",
         "contracts\\interfaces\\IUniswapV2Pair.sol"
       ],
       "versionRequirement": "=0.8.4",
@@ -1625,8 +1624,8 @@
       }
     },
     "test/Fixture.t.sol": {
-      "lastModificationDate": 1690381616782,
-      "contentHash": "08a2d2dbdf60aba179ecc5a4c9c36bbc",
+      "lastModificationDate": 1690457223157,
+      "contentHash": "ce57f8a35f97994401d1a6255a6d1196",
       "sourceName": "test/Fixture.t.sol",
       "solcConfig": {
         "settings": {

@@ -5,7 +5,6 @@ pragma solidity =0.8.4;
 //solhint-disable reason-string
 
 import "../interfaces/IUniswapV2Pair.sol";
-import "../interfaces/IUniswapV2Factory.sol";
 
 library UniswapV2Library {
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
@@ -25,7 +24,7 @@ library UniswapV2Library {
         address factory,
         address tokenA,
         address tokenB
-    ) internal view returns (address pair) {
+    ) internal pure returns (address pair) {
         (address token0, address token1) = sortTokens(tokenA, tokenB);
         pair = address(
             uint160(
@@ -35,13 +34,12 @@ library UniswapV2Library {
                             bytes1(0xff),
                             factory,
                             keccak256(abi.encodePacked(token0, token1)),
-                            hex"443533a897cfad2762695078bf6ee9b78b4edcda64ec31e1c83066cee4c90a7e" // init code hash
+                            hex"7ec9f8074a0272a89a09c529569776e11b8c0144c437bb7cdd067063f6f1109e" // init code hash
                         )
                     )
                 )
             )
         );
-        pair = IUniswapV2Factory(factory).getPair(tokenA, tokenB);
     }
 
     // fetches and sorts the reserves for a pair

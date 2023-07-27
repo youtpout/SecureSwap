@@ -83,7 +83,8 @@ contract Fixture is Test {
             deployer,
             deadline
         );
-        console.log("liquidity added");
+        console.log("Pair hash");
+        console.logBytes32(factoryContract.PAIR_HASH());
         vm.stopPrank();
     }
 }
