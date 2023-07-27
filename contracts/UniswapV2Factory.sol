@@ -23,6 +23,10 @@ contract UniswapV2Factory is IUniswapV2Factory {
     error FactoryPairExists();
     error FactoryNotAContract();
 
+    constructor(address _owner) {
+        owner = _owner;
+    }
+
     modifier onlyOwner() {
         if (msg.sender != owner) {
             revert FactoryOnlyOwner();
@@ -30,13 +34,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
         _;
     }
 
-    constructor(address _owner) {
-        owner = _owner;
-    }
-
-    function allPairsLength() external view override returns (uint256) {
-        return allPairs.length;
-    }
+    /* External Functions */
 
     function createPair(
         address tokenA,
@@ -89,6 +87,14 @@ contract UniswapV2Factory is IUniswapV2Factory {
         }
         authorizedRouters[_router] = authorized;
     }
+
+    /* Public view Functions */
+
+    function allPairsLength() external view override returns (uint256) {
+        return allPairs.length;
+    }
+
+    /* Private Functions */
 
     function _isContract(address addr) private view returns (bool) {
         uint256 size;

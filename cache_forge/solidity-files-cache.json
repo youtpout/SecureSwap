@@ -56,8 +56,8 @@
       }
     },
     "contracts/UniswapV2Factory.sol": {
-      "lastModificationDate": 1690456015885,
-      "contentHash": "b78b5b26bcb3a547ad6f782d6c1da1f8",
+      "lastModificationDate": 1690457083917,
+      "contentHash": "4b379154ba8c71949c443bafc8cf3a2d",
       "sourceName": "contracts/UniswapV2Factory.sol",
       "solcConfig": {
         "settings": {
