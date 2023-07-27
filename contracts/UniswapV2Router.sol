@@ -29,21 +29,29 @@ contract UniswapV2Router is IUniswapV2Router {
     bytes32 public constant SWAP_TYPEHASH =
         0xb4adfbac3cb08c3c789df3219d832799bb62fa32be119e5539c01f0ee8885ce9;
 
+    error RouterOnlyOwner();
+    error RouterExpired();
+    error RouterOutOfTime();
+    error RouterZeroAddress();
+
     modifier ensure(uint256 deadline) {
-        require(deadline >= block.timestamp, "UniswapV2Router: EXPIRED");
+        if (deadline < block.timestamp) {
+            revert RouterExpired();
+        }
         _;
     }
 
     modifier ensureSwap(uint256 startline, uint256 deadline) {
-        require(
-            block.timestamp >= startline && deadline >= block.timestamp,
-            "UniswapV2Router: EXPIRED"
-        );
+        if (block.timestamp < startline || deadline < block.timestamp) {
+            revert RouterOutOfTime();
+        }
         _;
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner");
+        if (msg.sender != owner) {
+            revert RouterOnlyOwner();
+        }
         _;
     }
 
@@ -75,39 +83,10 @@ contract UniswapV2Router is IUniswapV2Router {
     }
 
     function setOwner(address newOwner) external onlyOwner {
-        require(newOwner != address(0), "Owner can't be address 0");
+        if (newOwner == address(0)) {
+            revert RouterZeroAddress();
+        }
         owner = newOwner;
-    }
-
-    function getMessageHash(
-        address caller,
-        uint256 amountIn,
-        uint256 amountOut,
-        address[] calldata path,
-        uint256 startline,
-        uint256 deadline
-    ) public view returns (bytes32) {
-        uint256 nonceCaller = nonces[caller];
-        bytes32 digest = keccak256(
-            abi.encodePacked(
-                "\x19\x01",
-                DOMAIN_SEPARATOR,
-                keccak256(
-                    abi.encode(
-                        SWAP_TYPEHASH,
-                        caller,
-                        amountIn,
-                        amountOut,
-                        path,
-                        nonceCaller,
-                        startline,
-                        deadline
-                    )
-                )
-            )
-        );
-
-        return digest;
     }
 
     // **** ADD LIQUIDITY ****
@@ -776,10 +755,13 @@ contract UniswapV2Router is IUniswapV2Router {
                 amountIn
             )
         );
-        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(msg.sender);
+        uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(
+            msg.sender
+        );
         _swapSupportingFeeOnTransferTokens(path, msg.sender);
         require(
-            IERC20(path[path.length - 1]).balanceOf(msg.sender) - balanceBefore >=
+            IERC20(path[path.length - 1]).balanceOf(msg.sender) -
+                balanceBefore >=
                 amountOutMin,
             "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
@@ -820,7 +802,55 @@ contract UniswapV2Router is IUniswapV2Router {
         TransferHelper.safeTransferETH(msg.sender, amountOut);
     }
 
-    // **** LIBRARY FUNCTIONS ****
+    /* Public view Functions */
+
+    function getMessageHash(
+        address caller,
+        uint256 amountIn,
+        uint256 amountOut,
+        address[] calldata path,
+        uint256 startline,
+        uint256 deadline
+    ) public view returns (bytes32) {
+        uint256 nonceCaller = nonces[caller];
+        bytes32 digest = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                DOMAIN_SEPARATOR,
+                keccak256(
+                    abi.encode(
+                        SWAP_TYPEHASH,
+                        caller,
+                        amountIn,
+                        amountOut,
+                        path,
+                        nonceCaller,
+                        startline,
+                        deadline
+                    )
+                )
+            )
+        );
+
+        return digest;
+    }
+
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] memory path
+    ) public view virtual override returns (uint256[] memory amounts) {
+        return UniswapV2Library.getAmountsOut(factory, amountIn, path);
+    }
+
+    function getAmountsIn(
+        uint256 amountOut,
+        address[] memory path
+    ) public view virtual override returns (uint256[] memory amounts) {
+        return UniswapV2Library.getAmountsIn(factory, amountOut, path);
+    }
+
+    /* Public pure Functions */
+
     function quote(
         uint256 amountA,
         uint256 reserveA,
@@ -845,19 +875,7 @@ contract UniswapV2Router is IUniswapV2Router {
         return UniswapV2Library.getAmountIn(amountOut, reserveIn, reserveOut);
     }
 
-    function getAmountsOut(
-        uint256 amountIn,
-        address[] memory path
-    ) public view virtual override returns (uint256[] memory amounts) {
-        return UniswapV2Library.getAmountsOut(factory, amountIn, path);
-    }
-
-    function getAmountsIn(
-        uint256 amountOut,
-        address[] memory path
-    ) public view virtual override returns (uint256[] memory amounts) {
-        return UniswapV2Library.getAmountsIn(factory, amountOut, path);
-    }
+    /* Private Functions */
 
     function _verifySignature(
         uint256 amountIn,
@@ -875,23 +893,23 @@ contract UniswapV2Router is IUniswapV2Router {
             startline,
             deadline
         );
-        address signer = recoverSigner(signedMessage, signature);
+        address signer = _recoverSigner(signedMessage, signature);
         require(authorizedSigners[signer], "Invalid signer");
         nonces[msg.sender]++;
     }
 
-    function recoverSigner(
+    function _recoverSigner(
         bytes32 _ethSignedMessageHash,
         bytes memory _signature
-    ) public pure returns (address) {
-        (bytes32 r, bytes32 s, uint8 v) = splitSignature(_signature);
+    ) private pure returns (address) {
+        (bytes32 r, bytes32 s, uint8 v) = _splitSignature(_signature);
 
         return ecrecover(_ethSignedMessageHash, v, r, s);
     }
 
-    function splitSignature(
+    function _splitSignature(
         bytes memory sig
-    ) public pure returns (bytes32 r, bytes32 s, uint8 v) {
+    ) private pure returns (bytes32 r, bytes32 s, uint8 v) {
         require(sig.length == 65, "invalid signature length");
 
         assembly {
