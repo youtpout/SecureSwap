@@ -22,6 +22,9 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
         0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
     mapping(address => uint256) public override nonces;
 
+    error TokenExpired();
+    error TokenInvalidSignature();
+
     constructor() {
         DOMAIN_SEPARATOR = keccak256(
             abi.encode(
@@ -34,29 +37,6 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
                 address(this)
             )
         );
-    }
-
-    function _mint(address to, uint256 value) internal {
-        totalSupply += value;
-        balanceOf[to] += value;
-        emit Transfer(address(0), to, value);
-    }
-
-    function _burn(address from, uint256 value) internal {
-        balanceOf[from] -= value;
-        totalSupply -= value;
-        emit Transfer(from, address(0), value);
-    }
-
-    function _approve(address owner, address spender, uint256 value) private {
-        allowance[owner][spender] = value;
-        emit Approval(owner, spender, value);
-    }
-
-    function _transfer(address from, address to, uint256 value) private {
-        balanceOf[from] -= value;
-        balanceOf[to] += value;
-        emit Transfer(from, to, value);
     }
 
     function approve(
@@ -97,7 +77,9 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
         bytes32 s
     ) external override {
         //solhint-disable-next-line not-rely-on-time
-        require(deadline >= block.timestamp, "UniswapV2: EXPIRED");
+        if (deadline < block.timestamp) {
+            revert TokenExpired();
+        }
         bytes32 digest = keccak256(
             abi.encodePacked(
                 "\x19\x01",
@@ -115,10 +97,32 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
             )
         );
         address recoveredAddress = ecrecover(digest, v, r, s);
-        require(
-            recoveredAddress != address(0) && recoveredAddress == owner,
-            "UniswapV2: INVALID_SIGNATURE"
-        );
+        if (recoveredAddress == address(0) || recoveredAddress != owner) {
+            revert TokenInvalidSignature();
+        }
         _approve(owner, spender, value);
+    }
+
+    function _mint(address to, uint256 value) internal {
+        totalSupply += value;
+        balanceOf[to] += value;
+        emit Transfer(address(0), to, value);
+    }
+
+    function _burn(address from, uint256 value) internal {
+        balanceOf[from] -= value;
+        totalSupply -= value;
+        emit Transfer(from, address(0), value);
+    }
+
+    function _approve(address owner, address spender, uint256 value) private {
+        allowance[owner][spender] = value;
+        emit Approval(owner, spender, value);
+    }
+
+    function _transfer(address from, address to, uint256 value) private {
+        balanceOf[from] -= value;
+        balanceOf[to] += value;
+        emit Transfer(from, to, value);
     }
 }

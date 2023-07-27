@@ -60,7 +60,9 @@ contract Fixture is Test {
 
         vm.startPrank(deployer);
         // 1e16 0.01 ether
-        factoryContract = new UniswapV2Factory(deployer);
+        factoryContract = new UniswapV2Factory(deployer);        
+        console.log("Pair hash");
+        console.logBytes32(factoryContract.PAIR_HASH());
         routerContract = new UniswapV2Router(
             address(factoryContract),
             address(wEth)
@@ -83,8 +85,7 @@ contract Fixture is Test {
             deployer,
             deadline
         );
-        console.log("Pair hash");
-        console.logBytes32(factoryContract.PAIR_HASH());
+
         vm.stopPrank();
     }
 }
