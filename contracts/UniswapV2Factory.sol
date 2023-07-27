@@ -17,15 +17,15 @@ contract UniswapV2Factory is IUniswapV2Factory {
 
     mapping(address => bool) public override authorizedRouters;
 
-    error OnlyOwner();
-    error ZeroAddress();
-    error IdenticalAddress();
-    error PairExists();
-    error NotAContract();
+    error FactoryOnlyOwner();
+    error FactoryZeroAddress();
+    error FactoryIdenticalAddress();
+    error FactoryPairExists();
+    error FactoryNotAContract();
 
     modifier onlyOwner() {
         if (msg.sender != owner) {
-            revert OnlyOwner();
+            revert FactoryOnlyOwner();
         }
         _;
     }
@@ -43,18 +43,18 @@ contract UniswapV2Factory is IUniswapV2Factory {
         address tokenB
     ) external override returns (address pair) {
         if (tokenA == tokenB) {
-            revert IdenticalAddress();
+            revert FactoryIdenticalAddress();
         }
         (address token0, address token1) = tokenA < tokenB
             ? (tokenA, tokenB)
             : (tokenB, tokenA);
 
         if (token0 == address(0)) {
-            revert ZeroAddress();
+            revert FactoryZeroAddress();
         }
         if (getPair[token0][token1] != address(0)) {
             // single check is sufficient
-            revert PairExists();
+            revert FactoryPairExists();
         }
 
         pair = address(
@@ -75,7 +75,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
 
     function setOwner(address newOwner) external override onlyOwner {
         if (newOwner == address(0)) {
-            revert ZeroAddress();
+            revert FactoryZeroAddress();
         }
         owner = newOwner;
     }
@@ -85,7 +85,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
         bool authorized
     ) external override onlyOwner {
         if (!_isContract(_router)) {
-            revert NotAContract();
+            revert FactoryNotAContract();
         }
         authorizedRouters[_router] = authorized;
     }
