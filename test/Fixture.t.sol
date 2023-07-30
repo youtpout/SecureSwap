@@ -54,10 +54,6 @@ contract Fixture is Test {
         king = vm.addr(signerPrivateKey);
         vm.label(king, "King");
 
-        uint256 amountUsdc = 2_000_000 * 10 ** usdcToken.decimals();
-        deal(address(usdcToken), deployer, 2 * amountUsdc);
-        deal(deployer, 10_000 ether);
-
         vm.startPrank(deployer);
         // 1e16 0.01 ether
         factoryContract = new SecureFactory(deployer);        
@@ -73,18 +69,6 @@ contract Fixture is Test {
 
         factoryContract.setRouter(address(routerContract), true);
         routerContract.setSigner(king, true);
-
-        usdcToken.approve(address(routerContract), 2 * amountUsdc);
-        uint256 deadline = block.timestamp + 1000000000000000;
-
-        routerContract.addLiquidityETH{value: 1000 ether}(
-            address(usdcToken),
-            amountUsdc,
-            amountUsdc,
-            1000 ether,
-            deployer,
-            deadline
-        );
 
         vm.stopPrank();
     }
