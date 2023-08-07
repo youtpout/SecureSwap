@@ -56,8 +56,8 @@
       }
     },
     "contracts/SecureFactory.sol": {
-      "lastModificationDate": 1690478646407,
-      "contentHash": "b02b8219c314d72427440a6fe5779c3f",
+      "lastModificationDate": 1691401091633,
+      "contentHash": "d9193ee7628c3f18a5e2b700782d91c4",
       "sourceName": "contracts/SecureFactory.sol",
       "solcConfig": {
         "settings": {
@@ -106,8 +106,8 @@
       }
     },
     "contracts/SecurePair.sol": {
-      "lastModificationDate": 1690478710427,
-      "contentHash": "e1924219b1a186ca9812fccc469b54ec",
+      "lastModificationDate": 1691401117431,
+      "contentHash": "3bd492e126e0a06ea1cdfe54e94f68c3",
       "sourceName": "contracts/SecurePair.sol",
       "solcConfig": {
         "settings": {
@@ -329,8 +329,8 @@
       }
     },
     "contracts/interfaces/ISecurePair.sol": {
-      "lastModificationDate": 1690478646408,
-      "contentHash": "309708c732d49edd148f75e748144eaa",
+      "lastModificationDate": 1691401076542,
+      "contentHash": "b3c3761b9f0d490ab7d2ed9eea26834e",
       "sourceName": "contracts/interfaces/ISecurePair.sol",
       "solcConfig": {
         "settings": {
@@ -538,8 +538,8 @@
       }
     },
     "contracts/libraries/SecureLibrary.sol": {
-      "lastModificationDate": 1690478832786,
-      "contentHash": "3beb4278e7cf4c5b868cb397d61a9382",
+      "lastModificationDate": 1691403785931,
+      "contentHash": "4f08cbb2a54e41257a27ec5fd436a63f",
       "sourceName": "contracts/libraries/SecureLibrary.sol",
       "solcConfig": {
         "settings": {
