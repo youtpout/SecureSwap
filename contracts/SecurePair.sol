@@ -9,6 +9,8 @@ import "./libraries/UQ112x112.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/ISecureFactory.sol";
 
+import {console} from "forge-std/console.sol";
+
 //solhint-disable func-name-mixedcase
 //solhint-disable avoid-low-level-calls
 //solhint-disable reason-string
@@ -189,8 +191,22 @@ contract SecurePair is ISecurePair, SecureERC20 {
 
         {
             // scope for reserve{0,1}Adjusted, avoids stack too deep errors
-            uint256 balance0Adjusted = balance0 * DIVISOR_FEE - amount0In * getFees(_reserve0, amount0In);
-            uint256 balance1Adjusted = balance1 * DIVISOR_FEE - amount1In * getFees(_reserve1, amount1In);
+            uint256 balance0Adjusted = balance0 *
+                DIVISOR_FEE -
+                amount0In *
+                getFees(amount0In, _reserve0, _reserve1);
+            uint256 balance1Adjusted = balance1 *
+                DIVISOR_FEE -
+                amount1In *
+                getFees(amount1In, _reserve1, _reserve0);
+
+            uint256 fees;
+            if (amount0In > 0) {
+                fees = getFees(amount0In, _reserve0, _reserve1);
+            } else {
+                fees = getFees(amount1In, _reserve1, _reserve0);
+            }
+            console.log("fees %s divisior %s", fees, DIVISOR_FEE);
             if (
                 balance0Adjusted * balance1Adjusted <
                 uint256(_reserve0) * _reserve1 * DIVISOR_FEE_SQRT
@@ -231,11 +247,17 @@ contract SecurePair is ISecurePair, SecureERC20 {
 
     /* Public view Functions */
 
-    function getFees(uint256 reserve, uint256 amount) public view returns (uint256 fees){
-        fees  = amount > 0 && feesMultiplicator > 0 ? reserve / (amount * feesMultiplicator) : MINIMUM_FEE;
-        if(fees < MINIMUM_FEE){
+    function getFees(
+        uint256 amountA,
+        uint256 reserveA,
+        uint256 reserveB
+    ) public view returns (uint256 fees) {
+        fees = amountA > 0 && reserveB > 0
+            ? (reserveA * feesMultiplicator * feesMultiplicator) / (amountA * amountA * reserveB)
+            : MINIMUM_FEE;
+        if (fees < MINIMUM_FEE) {
             fees = MINIMUM_FEE;
-        }else if(fees > MAXIMUN_FEE){
+        } else if (fees > MAXIMUN_FEE) {
             fees = MAXIMUN_FEE;
         }
     }

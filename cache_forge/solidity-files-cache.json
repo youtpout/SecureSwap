@@ -56,8 +56,8 @@
       }
     },
     "contracts/SecureFactory.sol": {
-      "lastModificationDate": 1691401091633,
-      "contentHash": "d9193ee7628c3f18a5e2b700782d91c4",
+      "lastModificationDate": 1691416945323,
+      "contentHash": "c864be164fa4465df7cca9ddd335a4f6",
       "sourceName": "contracts/SecureFactory.sol",
       "solcConfig": {
         "settings": {
@@ -96,7 +96,8 @@
         "contracts\\interfaces\\ISecureFactory.sol",
         "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
-        "contracts\\libraries\\UQ112x112.sol"
+        "contracts\\libraries\\UQ112x112.sol",
+        "lib/forge-std/src\\console.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -106,8 +107,8 @@
       }
     },
     "contracts/SecurePair.sol": {
-      "lastModificationDate": 1691401117431,
-      "contentHash": "3bd492e126e0a06ea1cdfe54e94f68c3",
+      "lastModificationDate": 1691416504756,
+      "contentHash": "500cc4e1f5a6d87e59bd0f3b059187e8",
       "sourceName": "contracts/SecurePair.sol",
       "solcConfig": {
         "settings": {
@@ -145,7 +146,8 @@
         "contracts\\interfaces\\ISecureFactory.sol",
         "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
-        "contracts\\libraries\\UQ112x112.sol"
+        "contracts\\libraries\\UQ112x112.sol",
+        "lib/forge-std/src\\console.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -155,7 +157,7 @@
       }
     },
     "contracts/SecureRouter.sol": {
-      "lastModificationDate": 1690721075942,
+      "lastModificationDate": 1690478812056,
       "contentHash": "a8f7fda70d8b834b84cad12572f079be",
       "sourceName": "contracts/SecureRouter.sol",
       "solcConfig": {
@@ -538,8 +540,8 @@
       }
     },
     "contracts/libraries/SecureLibrary.sol": {
-      "lastModificationDate": 1691403785931,
-      "contentHash": "4f08cbb2a54e41257a27ec5fd436a63f",
+      "lastModificationDate": 1691416541276,
+      "contentHash": "c56221680f0b7f1a38b723acde5d1339",
       "sourceName": "contracts/libraries/SecureLibrary.sol",
       "solcConfig": {
         "settings": {
@@ -1583,7 +1585,7 @@
       }
     },
     "test/Fixture.t.sol": {
-      "lastModificationDate": 1690721472430,
+      "lastModificationDate": 1691403857230,
       "contentHash": "fe6e3026e75dbbfbf4e8f833d45bbe62",
       "sourceName": "test/Fixture.t.sol",
       "solcConfig": {
@@ -1659,8 +1661,8 @@
       }
     },
     "test/SwapTest.t.sol": {
-      "lastModificationDate": 1690723334682,
-      "contentHash": "349f66fe6888f670951f98179a7e648f",
+      "lastModificationDate": 1691407978502,
+      "contentHash": "ead43efc08372b82fc2b5dcfbc248b57",
       "sourceName": "test/SwapTest.t.sol",
       "solcConfig": {
         "settings": {

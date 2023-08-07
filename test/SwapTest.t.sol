@@ -86,6 +86,48 @@ contract SwapTest is Fixture {
         assertGt(usdcToken.balanceOf(alice), amountUsdc);
     }
 
+     function test_SwapExactSmallAmount() public {
+        deal(alice, 10 ether);
+        vm.startPrank(alice);
+
+        uint256 amountUsdc = 19 * 10 ** usdcToken.decimals();
+
+        address[] memory paths = new address[](2);
+        paths[0] = address(wEth);
+        paths[1] = address(usdcToken);
+
+        console.logBytes32(
+            keccak256(
+                "Swap(address caller,uint256 amountIn,uint256 amountOut,uint256[] paths,uint256 nonce,uint256 startline,uint256 deadline)"
+            )
+        );
+
+        uint256 deadline = block.timestamp + 1000;
+
+        bytes32 msgHash = routerContract.getMessageHash(
+            alice,
+            0.01 ether,
+            amountUsdc,
+            paths,
+            block.timestamp,
+            deadline
+        );
+
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, msgHash);
+        bytes memory signature = abi.encodePacked(r, s, v);
+
+        routerContract.swapExactETHForTokens{value: 0.01 ether}(
+            amountUsdc,
+            paths,
+            block.timestamp,
+            deadline,
+            signature
+        );
+
+        vm.stopPrank();
+        assertGt(usdcToken.balanceOf(alice), amountUsdc);
+    }
+
     function test_SwapExactTokensForTokens() public {
         deal(alice, 10 ether);
 
@@ -124,6 +166,8 @@ contract SwapTest is Fixture {
             deadline,
             signature
         );
+
+        console.log("swap %s usdc to %s btc", amountUsdc,btcToken.balanceOf(alice));
 
         vm.stopPrank();
         assertGt(btcToken.balanceOf(alice), amountBTC);
