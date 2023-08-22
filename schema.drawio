@@ -80,7 +80,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="23" value="With this authentification system only EOA can use our swap, so we exclude smartcontract from swap and limit Sandwich attack and snipping bot" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="210" y="270" width="260" height="60" as="geometry"/>
+                    <mxGeometry x="200" y="70" width="260" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" edge="1" parent="1" source="50" target="24">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -179,6 +179,7 @@
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="130" y="590" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="48">
@@ -188,7 +189,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
-                    <mxGeometry x="937.5" y="620" width="5" height="100" as="geometry"/>
+                    <mxGeometry x="937.5" y="639" width="5" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1" target="50">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -197,32 +198,32 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="50" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
-                    <mxGeometry x="122.5" y="620" width="5" height="110" as="geometry"/>
+                    <mxGeometry x="122.5" y="639" width="5" height="116" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="Send swap" style="endArrow=classic;html=1;exitX=0.9;exitY=0.07;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="50">
+                <mxCell id="52" value="Send swap" style="endArrow=classic;html=1;exitX=0.9;exitY=0.07;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="850" y="460" as="sourcePoint"/>
-                        <mxPoint x="940" y="630" as="targetPoint"/>
+                        <mxPoint x="127" y="646.7" as="sourcePoint"/>
+                        <mxPoint x="940" y="649" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="53" value="Verify signature and swap" style="endArrow=classic;html=1;entryX=-0.3;entryY=0.58;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.1;exitY=0.18;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48" target="48">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="850" y="460" as="sourcePoint"/>
-                        <mxPoint x="900" y="410" as="targetPoint"/>
+                        <mxPoint x="850" y="479" as="sourcePoint"/>
+                        <mxPoint x="900" y="429" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="870" y="660"/>
+                            <mxPoint x="870" y="679"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="54" value="Send transaction info" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48" target="50">
+                <mxCell id="54" value="Send transaction info" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="850" y="460" as="sourcePoint"/>
-                        <mxPoint x="900" y="410" as="targetPoint"/>
+                        <mxPoint x="850" y="479" as="sourcePoint"/>
+                        <mxPoint x="127.5" y="737" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="55" value="Request&lt;br&gt;a new swap" style="endArrow=classic;html=1;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="120" y="730" as="sourcePoint"/>
+                        <mxPoint x="120" y="750" as="sourcePoint"/>
                         <mxPoint x="120" y="370" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="40" y="550"/>
@@ -234,6 +235,15 @@
                         <mxPoint x="520" y="441" as="sourcePoint"/>
                         <mxPoint x="440" y="410" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="The signature deadline is 30 seconds, so an user can't generate infinite tx and wait to match a sell to frontrun.&lt;br&gt;Also the token can be send only to same user who init the tx, so you can't sell it from an other account." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="550" width="360" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="The user needs to wait the tx was mined to resend a swap tx, so an user can't send a buy and sell tx is the same block." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="750" width="380" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="We check if the user own suffisient token to swap, prevent from a sell if an user didn't already buy the token. Also the process take around 2 second, so the user miss the block if he wants to frontrun a transaction.&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="280" width="360" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
