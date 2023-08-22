@@ -1,115 +1,115 @@
 <mxfile host="65bd71144e">
     <diagram id="mXiDD7I7b2WsDy2nTSHJ" name="Page-1">
-        <mxGraphModel dx="1517" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1517" dy="841" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                <mxCell id="2" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
                     <mxGeometry x="110" y="40" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" edge="1" parent="1" source="12" target="2">
+                <mxCell id="7" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" parent="1" source="12" target="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="125" y="800" as="sourcePoint"/>
                         <mxPoint x="120" y="130" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="8" value="App" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="8" value="App" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="480" y="40" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="Blockchain" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+                <mxCell id="9" value="Blockchain" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
                     <mxGeometry x="910" y="40" width="60" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;" edge="1" parent="1" source="14" target="8">
+                <mxCell id="10" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;" parent="1" source="14" target="8" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="520" y="790" as="sourcePoint"/>
                         <mxPoint x="177" y="140" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;" edge="1" parent="1" source="28" target="9">
+                <mxCell id="11" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;" parent="1" source="28" target="9" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="940" y="800" as="sourcePoint"/>
                         <mxPoint x="530" y="130" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="13" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" edge="1" parent="1" source="24" target="12">
+                <mxCell id="13" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" parent="1" source="24" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="125" y="800" as="sourcePoint"/>
                         <mxPoint x="125" y="100" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="12" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="12" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="122.5" y="150" width="5" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;" edge="1" parent="1" source="26" target="14">
+                <mxCell id="15" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;" parent="1" source="26" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="520" y="790" as="sourcePoint"/>
                         <mxPoint x="520" y="120" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="14" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="517.5" y="150" width="5" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="Request connection" style="endArrow=classic;html=1;exitX=0.9;exitY=0.05;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.1;entryY=0.07;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="12" target="14">
+                <mxCell id="16" value="Request connection" style="endArrow=classic;html=1;exitX=0.9;exitY=0.05;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.1;entryY=0.07;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="12" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="340" as="sourcePoint"/>
                         <mxPoint x="900" y="290" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="Send a message to sign" style="endArrow=classic;html=1;exitX=-0.1;exitY=0.35;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="14">
+                <mxCell id="17" value="Send a message to sign" style="endArrow=classic;html=1;exitX=-0.1;exitY=0.35;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="370" as="sourcePoint"/>
                         <mxPoint x="130" y="185" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="18" value="Sign the message" style="endArrow=classic;html=1;exitX=1.1;exitY=0.62;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.1;entryY=0.67;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="12" target="14">
+                <mxCell id="18" value="Sign the message" style="endArrow=classic;html=1;exitX=1.1;exitY=0.62;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.1;entryY=0.67;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="12" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="137" y="165" as="sourcePoint"/>
                         <mxPoint x="510" y="210" as="targetPoint"/>
                         <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.9;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="14" target="12">
+                <mxCell id="19" value="" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.9;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="14" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="380" as="sourcePoint"/>
                         <mxPoint x="900" y="330" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="22" value="Send auth token for this wallet address" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="19">
+                <mxCell id="22" value="Send auth token for this wallet address" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="19" vertex="1" connectable="0">
                     <mxGeometry x="0.0969" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" value="With this authentification system only EOA can use our swap, so we exclude smartcontract from swap and limit Sandwich attack and snipping bot" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="23" value="With this authentification system only EOA can use our swap, so we exclude smartcontract from swap and limit Sandwich attack and snipping bot" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="200" y="70" width="260" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" edge="1" parent="1" source="50" target="24">
+                <mxCell id="25" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;startArrow=none;" parent="1" source="50" target="24" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="125" y="800" as="sourcePoint"/>
                         <mxPoint x="125" y="250" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="24" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="122.5" y="360" width="5" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="26">
+                <mxCell id="27" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="520" y="790" as="sourcePoint"/>
                         <mxPoint x="520" y="250" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="26" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="517.5" y="360" width="5" height="230" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;" edge="1" parent="1" source="48" target="28">
+                <mxCell id="29" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=none;" parent="1" source="48" target="28" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="940" y="800" as="sourcePoint"/>
                         <mxPoint x="940" y="120" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="28" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="28" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="937.5" y="380" width="5" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="Verify signature" style="endArrow=classic;html=1;exitX=0.3;exitY=0.69;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="14" target="14">
+                <mxCell id="33" value="Verify signature" style="endArrow=classic;html=1;exitX=0.3;exitY=0.69;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="14" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
@@ -118,7 +118,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="34" value="Verifiy user auth token" style="endArrow=classic;html=1;exitX=1.3;exitY=0.03;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.3;entryY=0.267;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="26" target="26">
+                <mxCell id="34" value="Verifiy user auth token" style="endArrow=classic;html=1;exitX=1.3;exitY=0.03;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.3;entryY=0.267;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="26" target="26" edge="1">
                     <mxGeometry x="-0.0166" y="30" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
@@ -128,13 +128,13 @@
                         <mxPoint x="18" y="-28" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="35" value="Request swap" style="endArrow=classic;html=1;entryX=-0.3;entryY=0.04;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="26">
+                <mxCell id="35" value="Request swap" style="endArrow=classic;html=1;entryX=-0.3;entryY=0.04;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="130" y="370" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="36" value="" style="endArrow=classic;html=1;entryX=0.1;entryY=0.609;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.1;exitY=0.483;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="26" target="26">
+                <mxCell id="36" value="" style="endArrow=classic;html=1;entryX=0.1;entryY=0.609;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.1;exitY=0.483;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="26" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
@@ -143,30 +143,30 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="37" value="Check if user own suffisent token for the swap" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="36">
+                <mxCell id="37" value="Check if user own suffisent token for the swap" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="36" vertex="1" connectable="0">
                     <mxGeometry x="-0.059" y="-3" relative="1" as="geometry">
                         <mxPoint x="1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="42" value="Return user token amount" style="endArrow=classic;html=1;exitX=-0.3;exitY=0.557;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="28" target="26">
+                <mxCell id="42" value="Return user token amount" style="endArrow=classic;html=1;exitX=-0.3;exitY=0.557;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="28" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="43" value="Request message to sign for the swap" style="endArrow=classic;html=1;" edge="1" parent="1">
+                <mxCell id="43" value="Request message to sign for the swap" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="530" y="500" as="sourcePoint"/>
                         <mxPoint x="940" y="500" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="44" value="Return the message to sign" style="endArrow=classic;html=1;exitX=0.1;exitY=0.956;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="28" target="26">
+                <mxCell id="44" value="Return the message to sign" style="endArrow=classic;html=1;exitX=0.1;exitY=0.956;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="28" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="46" value="Sign the message" style="endArrow=classic;html=1;exitX=0.1;exitY=0.783;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.9;entryY=0.974;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="26" target="26">
+                <mxCell id="46" value="Sign the message" style="endArrow=classic;html=1;exitX=0.1;exitY=0.783;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.9;entryY=0.974;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="26" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="900" y="410" as="targetPoint"/>
@@ -175,38 +175,38 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="47" value="Receive signature for swap" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="26">
+                <mxCell id="47" value="Receive signature for swap" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="460" as="sourcePoint"/>
                         <mxPoint x="130" y="590" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="48">
+                <mxCell id="49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="48" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="940" y="800" as="sourcePoint"/>
                         <mxPoint x="940" y="540" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="937.5" y="639" width="5" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="51" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1" target="50">
+                <mxCell id="51" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" parent="1" target="50" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="125" y="800" as="sourcePoint"/>
                         <mxPoint x="125" y="600" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="50" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
+                <mxCell id="50" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" parent="1" vertex="1">
                     <mxGeometry x="122.5" y="639" width="5" height="116" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="Send swap" style="endArrow=classic;html=1;exitX=0.9;exitY=0.07;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+                <mxCell id="52" value="Send swap" style="endArrow=classic;html=1;exitX=0.9;exitY=0.07;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="127" y="646.7" as="sourcePoint"/>
                         <mxPoint x="940" y="649" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="53" value="Verify signature and swap" style="endArrow=classic;html=1;entryX=-0.3;entryY=0.58;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.1;exitY=0.18;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48" target="48">
+                <mxCell id="53" value="Verify signature and swap" style="endArrow=classic;html=1;entryX=-0.3;entryY=0.58;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.1;exitY=0.18;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="48" target="48" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="479" as="sourcePoint"/>
                         <mxPoint x="900" y="429" as="targetPoint"/>
@@ -215,13 +215,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="54" value="Send transaction info" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48">
+                <mxCell id="54" value="Send transaction info" style="endArrow=classic;html=1;exitX=0.3;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="48" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="850" y="479" as="sourcePoint"/>
                         <mxPoint x="127.5" y="737" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="55" value="Request&lt;br&gt;a new swap" style="endArrow=classic;html=1;" edge="1" parent="1">
+                <mxCell id="55" value="Request&lt;br&gt;a new swap" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="120" y="750" as="sourcePoint"/>
                         <mxPoint x="120" y="370" as="targetPoint"/>
@@ -230,19 +230,19 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="56" value="Ask user balance for this swap" style="endArrow=classic;html=1;entryX=0.9;entryY=0.381;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="28">
+                <mxCell id="56" value="Ask user balance for this swap" style="endArrow=classic;html=1;entryX=0.9;entryY=0.381;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="28" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="520" y="441" as="sourcePoint"/>
                         <mxPoint x="440" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="57" value="The signature deadline is 30 seconds, so an user can't generate infinite tx and wait to match a sell to frontrun.&lt;br&gt;Also the token can be send only to same user who init the tx, so you can't sell it from an other account." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="57" value="The signature deadline is 30 seconds, so an user can't generate infinite tx and wait to match a sell to frontrun.&lt;br&gt;Also the token can be send only to same user who init the tx, so you can't sell it from an other account." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="560" y="550" width="360" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="58" value="The user needs to wait the tx was mined to resend a swap tx, so an user can't send a buy and sell tx is the same block." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="58" value="The user needs to wait the tx was mined to resend a swap tx, so an user can't send a buy and sell tx is the same block." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="370" y="750" width="380" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="59" value="We check if the user own suffisient token to swap, prevent from a sell if an user didn't already buy the token. Also the process take around 2 second, so the user miss the block if he wants to frontrun a transaction.&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="59" value="We check if the user own suffisient token to swap, prevent from a sell if an user didn't already buy the token. Also the process take around 2 second, so the user miss the block if he wants to frontrun a transaction.&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="570" y="280" width="360" height="80" as="geometry"/>
                 </mxCell>
             </root>
