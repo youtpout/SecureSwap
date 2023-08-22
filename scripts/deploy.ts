@@ -4,7 +4,10 @@ import { SecureFactory, SecureRouter } from "../typechain-types";
 async function main() {
   const [deployer, alice, bob, daniel] = await ethers.getSigners();
 
-  const wMatic = "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270";
+  let wMatic = "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270";
+
+  // mumbai
+  wMatic = "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889";
 
   const Factory = await ethers.getContractFactory("SecureFactory");
   const factory = (await Factory.deploy(deployer)) as SecureFactory;
@@ -25,7 +28,7 @@ async function main() {
   await factory.setRouter(addressRouter, true);
   console.log("router added");
 
-  await router.setSigner(alice, true);
+  await router.setSigner(deployer.address, true);
   console.log("signer added");
 }
 

@@ -36,6 +36,13 @@ const config: HardhatUserConfig = {
         },
       ],
     },
+    polygonMumbai: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/oKxs-03sij-U_N0iOlrSsZFr29-IqbuF`,
+      accounts: [process.env.Key || ""],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.APIKEY || "",
   },
   solidity: {
     version: "0.8.4",
