@@ -56,8 +56,8 @@
       }
     },
     "contracts/SecureFactory.sol": {
-      "lastModificationDate": 1691416945323,
-      "contentHash": "c864be164fa4465df7cca9ddd335a4f6",
+      "lastModificationDate": 1693226079316,
+      "contentHash": "77e8ff9aa0a63b0381aed608bee52c1a",
       "sourceName": "contracts/SecureFactory.sol",
       "solcConfig": {
         "settings": {
@@ -96,8 +96,7 @@
         "contracts\\interfaces\\ISecureFactory.sol",
         "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
-        "contracts\\libraries\\UQ112x112.sol",
-        "lib/forge-std/src\\console.sol"
+        "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -107,8 +106,8 @@
       }
     },
     "contracts/SecurePair.sol": {
-      "lastModificationDate": 1691416504756,
-      "contentHash": "500cc4e1f5a6d87e59bd0f3b059187e8",
+      "lastModificationDate": 1693226067561,
+      "contentHash": "e1924219b1a186ca9812fccc469b54ec",
       "sourceName": "contracts/SecurePair.sol",
       "solcConfig": {
         "settings": {
@@ -146,8 +145,7 @@
         "contracts\\interfaces\\ISecureFactory.sol",
         "contracts\\interfaces\\ISecurePair.sol",
         "contracts\\libraries\\Math.sol",
-        "contracts\\libraries\\UQ112x112.sol",
-        "lib/forge-std/src\\console.sol"
+        "contracts\\libraries\\UQ112x112.sol"
       ],
       "versionRequirement": "=0.8.4",
       "artifacts": {
@@ -157,7 +155,7 @@
       }
     },
     "contracts/SecureRouter.sol": {
-      "lastModificationDate": 1690478812056,
+      "lastModificationDate": 1693226058340,
       "contentHash": "a8f7fda70d8b834b84cad12572f079be",
       "sourceName": "contracts/SecureRouter.sol",
       "solcConfig": {
@@ -331,8 +329,8 @@
       }
     },
     "contracts/interfaces/ISecurePair.sol": {
-      "lastModificationDate": 1691401076542,
-      "contentHash": "b3c3761b9f0d490ab7d2ed9eea26834e",
+      "lastModificationDate": 1693226010397,
+      "contentHash": "688295913b015778fd4754cae7abbeae",
       "sourceName": "contracts/interfaces/ISecurePair.sol",
       "solcConfig": {
         "settings": {
@@ -540,8 +538,8 @@
       }
     },
     "contracts/libraries/SecureLibrary.sol": {
-      "lastModificationDate": 1691416541276,
-      "contentHash": "c56221680f0b7f1a38b723acde5d1339",
+      "lastModificationDate": 1693226109017,
+      "contentHash": "3a17dfb9d8e4558e6f84677dd02d4a49",
       "sourceName": "contracts/libraries/SecureLibrary.sol",
       "solcConfig": {
         "settings": {
@@ -1660,8 +1658,85 @@
         }
       }
     },
+    "test/LiquidityTest.t.sol": {
+      "lastModificationDate": 1693225160829,
+      "contentHash": "b05c3da9bc43cc6234b5862ec8fe39f0",
+      "sourceName": "test/LiquidityTest.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "useLiteralContent": false,
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "paris",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts\\SecureERC20.sol",
+        "contracts\\SecureFactory.sol",
+        "contracts\\SecurePair.sol",
+        "contracts\\SecureRouter.sol",
+        "contracts\\interfaces\\IERC20.sol",
+        "contracts\\interfaces\\ISecureERC20.sol",
+        "contracts\\interfaces\\ISecureFactory.sol",
+        "contracts\\interfaces\\ISecurePair.sol",
+        "contracts\\interfaces\\ISecureRouter.sol",
+        "contracts\\interfaces\\ISecureRouter01.sol",
+        "contracts\\interfaces\\IWETH.sol",
+        "contracts\\libraries\\Math.sol",
+        "contracts\\libraries\\SecureLibrary.sol",
+        "contracts\\libraries\\TransferHelper.sol",
+        "contracts\\libraries\\UQ112x112.sol",
+        "contracts\\test\\ERC20.sol",
+        "lib/forge-std/lib/ds-test/src\\test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src\\Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src\\console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol",
+        "lib/forge-std/src/safeconsole.sol",
+        "test\\Fixture.t.sol"
+      ],
+      "versionRequirement": "^0.8.4",
+      "artifacts": {
+        "SwapTest": {
+          "0.8.4+commit.c7e474f2.Windows.msvc": "LiquidityTest.t.sol\\SwapTest.json"
+        }
+      }
+    },
     "test/SwapTest.t.sol": {
-      "lastModificationDate": 1691407978502,
+      "lastModificationDate": 1692716364680,
       "contentHash": "ead43efc08372b82fc2b5dcfbc248b57",
       "sourceName": "test/SwapTest.t.sol",
       "solcConfig": {

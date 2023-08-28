@@ -9,8 +9,6 @@ import "./libraries/UQ112x112.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/ISecureFactory.sol";
 
-import {console} from "forge-std/console.sol";
-
 //solhint-disable func-name-mixedcase
 //solhint-disable avoid-low-level-calls
 //solhint-disable reason-string
@@ -19,16 +17,11 @@ import {console} from "forge-std/console.sol";
 contract SecurePair is ISecurePair, SecureERC20 {
     using UQ112x112 for uint224;
 
-    uint256 public constant override MINIMUM_LIQUIDITY = 1e3;
-    uint256 public constant MINIMUM_FEE = 1e2;
-    uint256 public constant MAXIMUN_FEE = 1e4;
-    uint256 public constant DIVISOR_FEE = 1e6;
-    uint256 public constant DIVISOR_FEE_SQRT = 1e12;
+    uint256 public constant override MINIMUM_LIQUIDITY = 10 ** 3;
 
     address public override factory;
     address public override token0;
     address public override token1;
-    uint96 public feesMultiplicator;
 
     uint112 private reserve0; // uses single storage slot, accessible via getReserves
     uint112 private reserve1; // uses single storage slot, accessible via getReserves
@@ -76,18 +69,13 @@ contract SecurePair is ISecurePair, SecureERC20 {
     /* External Functions */
 
     // called once by the factory at time of deployment
-    function initialize(
-        address _token0,
-        address _token1,
-        uint96 _feesMultiplicator
-    ) external override {
+    function initialize(address _token0, address _token1) external override {
         if (msg.sender != factory) {
             // sufficient check
             revert PairForbidden();
         }
         token0 = _token0;
         token1 = _token1;
-        feesMultiplicator = _feesMultiplicator;
     }
 
     // this low-level function should be called from a contract which performs important safety checks
@@ -191,25 +179,11 @@ contract SecurePair is ISecurePair, SecureERC20 {
 
         {
             // scope for reserve{0,1}Adjusted, avoids stack too deep errors
-            uint256 balance0Adjusted = balance0 *
-                DIVISOR_FEE -
-                amount0In *
-                getFees(amount0In, _reserve0, _reserve1);
-            uint256 balance1Adjusted = balance1 *
-                DIVISOR_FEE -
-                amount1In *
-                getFees(amount1In, _reserve1, _reserve0);
-
-            uint256 fees;
-            if (amount0In > 0) {
-                fees = getFees(amount0In, _reserve0, _reserve1);
-            } else {
-                fees = getFees(amount1In, _reserve1, _reserve0);
-            }
-            console.log("fees %s divisior %s", fees, DIVISOR_FEE);
+            uint256 balance0Adjusted = balance0 * 1000 - amount0In * 3;
+            uint256 balance1Adjusted = balance1 * 1000 - amount1In * 3;
             if (
                 balance0Adjusted * balance1Adjusted <
-                uint256(_reserve0) * _reserve1 * DIVISOR_FEE_SQRT
+                uint256(_reserve0) * _reserve1 * 1e6
             ) {
                 revert PairK();
             }
@@ -246,21 +220,6 @@ contract SecurePair is ISecurePair, SecureERC20 {
     }
 
     /* Public view Functions */
-
-    function getFees(
-        uint256 amountA,
-        uint256 reserveA,
-        uint256 reserveB
-    ) public view returns (uint256 fees) {
-        fees = amountA > 0 && reserveB > 0
-            ? (reserveA * feesMultiplicator * feesMultiplicator) / (amountA * amountA * reserveB)
-            : MINIMUM_FEE;
-        if (fees < MINIMUM_FEE) {
-            fees = MINIMUM_FEE;
-        } else if (fees > MAXIMUN_FEE) {
-            fees = MAXIMUN_FEE;
-        }
-    }
 
     function getReserves()
         public

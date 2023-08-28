@@ -58,7 +58,7 @@ contract SecureFactory is ISecureFactory {
         pair = address(
             new SecurePair{salt: keccak256(abi.encodePacked(token0, token1))}()
         );
-        ISecurePair(pair).initialize(token0, token1, 35000);
+        ISecurePair(pair).initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

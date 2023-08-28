@@ -56,5 +56,5 @@ interface ISecurePair is ISecureERC20 {
 
     function sync() external;
 
-    function initialize(address, address, uint96) external;
+    function initialize(address, address) external;
 }

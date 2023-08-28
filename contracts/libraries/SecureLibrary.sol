@@ -103,7 +103,7 @@ library SecureLibrary {
                             bytes1(0xff),
                             factory,
                             keccak256(abi.encodePacked(token0, token1)),
-                            hex"5818411629c72c12026722f79ce70077ad80ccc9c9768d2e0ec9fec1b293d204" // init code hash
+                            hex"e30cba9c8ba1a28ab709903d2423802d749d4bf968badd3cf5fa5c29ef22c806" // init code hash
                         )
                     )
                 )
