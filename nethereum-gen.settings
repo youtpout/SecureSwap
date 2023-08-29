@@ -1,0 +1,7 @@
+{
+    "projectName": "SecureSwap",
+    "namespace": "SecureSwap",
+    "lang":0,
+    "autoCodeGen":true,
+    "projectPath": "./SecureSwap"
+}

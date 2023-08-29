@@ -18,3 +18,5 @@ typechain-types
 !.yarn/versions
 
 out
+bin
+obj
